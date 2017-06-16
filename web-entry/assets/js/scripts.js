@@ -73,7 +73,7 @@ jQuery(document).ready(function() {
 
         let success = function(token) {
             var data = ("&info=" + token).concat(";").concat($('#l-form-email').val());
-            $(window).attr('location','dashboard.html?' + data);
+            $(window).attr('location','web-entry/dashboard.html?' + data);
         };
 
         let error = function(jqXHR, textStatus, ajaxSettings, thrownError) {

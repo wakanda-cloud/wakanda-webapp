@@ -57,23 +57,25 @@
     };
 
     $(function () {
-        let token = $.urlParam('info').split(";")[0];
-        let email = $.urlParam('info').split(";")[1];
-        $.ajax({
-            method: 'GET',
-            url: 'https://wakandaserver.herokuapp.com/getDashboardData',
-            crossDomain: true,
-            headers: {
-                "content-type": "application/x-www-form-urlencoded",
-                "cache-control": "no-cache"
-            },
-            data: {
-                token: token,
-                email: email
-            }
-        }).success(function(data) {
-            data = data.concat("&email=" + $('#l-form-email').val());
-            $(window).attr('location','../pages/projects.html?' + data);
-        });
+        setTimeout(function() {
+            let token = $.urlParam('info').split(";")[0];
+            let email = $.urlParam('info').split(";")[1];
+            $.ajax({
+                method: 'GET',
+                url: 'https://wakandaserver.herokuapp.com/getDashboardData',
+                crossDomain: true,
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded",
+                    "cache-control": "no-cache"
+                },
+                data: {
+                    token: token,
+                    email: email
+                }
+            }).success(function (data) {
+                data = data.concat("&email=" + $('#l-form-email').val());
+                $(window).attr('location', '../pages/projects.html?' + data);
+            });
+        }, 2000);
     });
 </script>
