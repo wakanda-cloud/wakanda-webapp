@@ -181,7 +181,7 @@
         function loadProjects() {
             $.ajax({
                 method: 'GET',
-                url: 'http://localhost:8080/getProjects',
+                url: 'https://wakandaservice.herokuapp.com/getProjects',
                 crossDomain: true,
                 headers: {
                     "content-type": "application/x-www-form-urlencoded",
@@ -246,7 +246,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://localhost:8080/generate",
+                "url": "https://wakandaservice.herokuapp.com/generate",
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json",
@@ -268,7 +268,7 @@
             logInterval = setInterval(function() {
                 $.ajax({
                     method: 'GET',
-                    url: 'http://localhost:8080/getLogs',
+                    url: 'https://wakandaservice.herokuapp.com/getLogs',
                     crossDomain: true,
                     headers: {
                         "content-type": "application/x-www-form-urlencoded",
