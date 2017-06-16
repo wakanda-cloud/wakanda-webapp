@@ -1,7 +1,7 @@
 'use strict'
 
 jQuery(document).ready(function() {
-    $.backstretch("assets/img/backgrounds/1.jpg");
+    $.backstretch("web-entry/assets/img/backgrounds/1.jpg");
     $('.show-register-form').on('click', function(){
     	if( ! $(this).hasClass('active') ) {
     		$('.show-login-form').removeClass('active');
