@@ -37,3 +37,7 @@
 
     margin: auto;
 }
+
+.sk-cube-grid .sk-cube {
+    background-color: #9088ec !important;
+}

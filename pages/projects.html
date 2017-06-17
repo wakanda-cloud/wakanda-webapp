@@ -18,10 +18,10 @@
     <link href="../assets/css/dashboard/animate.min.css" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
+    <link href="../assets/css/general/loading-spinner.css" rel="stylesheet"/>
     <link href="../assets/css/dashboard/bootstrap-wakanda.css" rel="stylesheet"/>
     <link href="../assets/css/dashboard/wakanda.css" rel="stylesheet"/>
     <link href="../assets/css/dashboard/buttons.css" rel="stylesheet"/>
-    <link href="../assets/css/general/loading-spinner.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/dashboard/demo.css" rel="stylesheet" />
@@ -59,7 +59,17 @@
                             </div>
                             <div class="content">
                                 <div id="projectsRow" class="row">
-
+                                    <div class="projectsLoading sk-cube-grid">
+                                        <div class="sk-cube sk-cube1"></div>
+                                        <div class="sk-cube sk-cube2"></div>
+                                        <div class="sk-cube sk-cube3"></div>
+                                        <div class="sk-cube sk-cube4"></div>
+                                        <div class="sk-cube sk-cube5"></div>
+                                        <div class="sk-cube sk-cube6"></div>
+                                        <div class="sk-cube sk-cube7"></div>
+                                        <div class="sk-cube sk-cube8"></div>
+                                        <div class="sk-cube sk-cube9"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -164,13 +174,11 @@
             };
 
             var successLoadProjects = function (status, data) {
+                $('.projectsLoading').remove();
                 if (status !== "nocontent") {
-                    if (!isJson(data)) {
-                        showHelp();
-                        return;
-                    }
-
                     addProjectsOnList(data);
+                } else {
+                    showHelp();
                 }
             };
 

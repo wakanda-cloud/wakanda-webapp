@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="../assets/img/wicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Wakanda</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <link rel="stylesheet" href="../assets/css/general/loading-spinner.css">
+
+
+    <link rel="stylesheet" href="../includes/wakanda-dashboard/api/jquery-jvectormap-2.0.3.css" type="text/css"
+          media="screen"/>
+    <link rel="stylesheet" href="../includes/wakanda-dashboard/js/maps.css" type="text/css" media="screen"/>
+    <script src="../includes/wakanda-dashboard/api/jquery-2.2.4.min.js"></script>
+    <script src="../includes/wakanda-dashboard/api/jquery-jvectormap-2.0.3.js" charset="utf-8"></script>
+    <script src="../includes/wakanda-dashboard/api/maps/jquery.vmap.brazil.js" charset="utf-8"></script>
+    <script src="../includes/wakanda-dashboard/api/maps/jquery.vmap.world2.js" charset="utf-8"></script>
+    <script src="../assets/js/general/restapi.js" charset="utf-8"></script>
+    <!-- Bootstrap core CSS     -->
+    <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link href="../assets/css/dashboard/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="../assets/css/dashboard/bootstrap-wakanda.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../assets/css/dashboard/demo.css" rel="stylesheet"/>
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="../assets/css/dashboard/pe-icon-7-stroke.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-5.jpg">
+        <div class="sidebar-wrapper" data-include="menu">
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed" data-include="navbar">
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card">
+                    <article style="padding-left:10px;padding-right:10px;padding-top:15px;" class="markdown-body entry-content" itemprop="text">
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr>
+                                <td width="50%" valign="top">
+                                    <h1><a id="user-content-wakanda-service" class="anchor" href="#wakanda-service"
+                                           aria-hidden="true">
+                                        <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1"
+                                             viewBox="0 0 16 16" width="16">
+                                            <path fill-rule="evenodd"
+                                                  d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                                        </svg>
+                                    </a>Wakanda Service
+                                    </h1>
+                                    <br>
+                                    This service was created to help developers a register statistic of use of your
+                                    applications,
+                                    like crm, erp, mobile, apps, etc.
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <a href="https://camo.githubusercontent.com/4c79a914cda2a0b3cc3911b36c072bdafb2cf969/68747470733a2f2f696d61676573352e616c706861636f646572732e636f6d2f3630362f3630363439302e6a7067"
+                                       target="_blank"><img
+                                            width="500" height="300" src="https://camo.githubusercontent.com/4c79a914cda2a0b3cc3911b36c072bdafb2cf969/68747470733a2f2f696d61676573352e616c706861636f646572732e636f6d2f3630362f3630363439302e6a7067"
+                                            data-canonical-src="https://images5.alphacoders.com/606/606490.jpg"
+                                            style="max-width:100%;"></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2><a id="user-content--its-simple-" class="anchor" href="#-its-simple-" aria-hidden="true">
+                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1"
+                                 viewBox="0 0 16 16"
+                                 width="16">
+                                <path fill-rule="evenodd"
+                                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                            </svg>
+                        </a> Its simple
+                        </h2>
+                        <p>Have two ways to communicate with wakanda:<br></p>
+                        <p><code>POST -&gt; /listStatistic</code><br></p>
+                        <div class="highlight highlight-source-json"><pre><span class="pl-s"><span
+                                class="pl-pds">"</span>client<span class="pl-pds">"</span></span>: <span
+                                class="pl-s"><span
+                                class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>token<span class="pl-pds">"</span></span>: <span class="pl-s"><span
+                                    class="pl-pds">"</span><span class="pl-pds">"</span></span></pre>
+                        </div>
+                        <p><code>Send '*' to list all statistics;</code><br>
+                            <code>Send "client code" to list all statistics by this client;</code><br></p>
+                        <p><code>POST -&gt; /registerStatistic</code><br></p>
+                        <p>JSON FORMAT</p>
+                        <div class="highlight highlight-source-json"><pre><span class="pl-s"><span
+                                class="pl-pds">"</span>client<span class="pl-pds">"</span></span>: <span
+                                class="pl-s"><span
+                                class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>module<span class="pl-pds">"</span></span>: <span class="pl-s"><span
+                                    class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>submodule<span class="pl-pds">"</span></span>: <span class="pl-s"><span
+                                    class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span
+                                    class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>linkClicked<span class="pl-pds">"</span></span>: <span
+                                    class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+<span class="pl-s"><span class="pl-pds">"</span>token<span class="pl-pds">"</span></span>: <span class="pl-s"><span
+                                    class="pl-pds">"</span><span class="pl-pds">"</span></span></pre>
+                        </div>
+                        <p>*For now its a fixed layout to register statistics;<br></p>
+                        <h2><a id="user-content--api-usage-" class="anchor" href="#-api-usage-" aria-hidden="true">
+                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1"
+                                 viewBox="0 0 16 16"
+                                 width="16">
+                                <path fill-rule="evenodd"
+                                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                            </svg>
+                        </a> API Usage
+                        </h2>
+                        <h3><a id="user-content-import-this-scripts-on-your-html-page" class="anchor"
+                               href="#import-this-scripts-on-your-html-page" aria-hidden="true">
+                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1"
+                                 viewBox="0 0 16 16"
+                                 width="16">
+                                <path fill-rule="evenodd"
+                                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                            </svg>
+                        </a>Import this scripts on your HTML page
+                        </h3>
+                        <div class="highlight highlight-text-html-basic"><pre>&lt;<span
+                                class="pl-ent">script</span> <span
+                                class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js<span
+                                class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;&lt;<span
+                                class="pl-ent">br</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.js<span
+                                    class="pl-pds">"</span></span>&gt;&lt;/<span
+                                    class="pl-ent">script</span>&gt;&lt;<span
+                                    class="pl-ent">br</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://code.jquery.com/jquery-2.2.4.min.js<span
+                                    class="pl-pds">"</span></span> <span class="pl-e">integrity</span>=<span
+                                    class="pl-s"><span
+                                    class="pl-pds">"</span>sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=<span
+                                    class="pl-pds">"</span></span> <span class="pl-e">crossorigin</span>=<span
+                                    class="pl-s"><span
+                                    class="pl-pds">"</span>anonymous<span class="pl-pds">"</span></span>&gt;&lt;/<span
+                                    class="pl-ent">script</span>&gt;&lt;<span class="pl-ent">br</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdn.jsdelivr.net/gh/lucasventurasc/wakanda@v1.1/webapi/wakanda.js<span
+                                    class="pl-pds">"</span></span>&gt;&lt;/<span
+                                    class="pl-ent">script</span>&gt;&lt;<span
+                                    class="pl-ent">br</span>&gt;</pre>
+                        </div>
+                        <h3><a id="user-content--instance-wakanda-as-global-variable" class="anchor"
+                               href="#-instance-wakanda-as-global-variable" aria-hidden="true">
+                            <svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1"
+                                 viewBox="0 0 16 16"
+                                 width="16">
+                                <path fill-rule="evenodd"
+                                      d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+                            </svg>
+                        </a> Instance Wakanda as global variable
+                        </h3>
+                        <p>This will bind your DOM Elements with ".wakanda" class to fire statistic register when
+                            clicked<br>
+                            Wakanda expect password, token and server in your constructor;<br></p>
+                        <div class="highlight highlight-text-html-basic">
+                <pre>&lt;<span class="pl-ent">button</span> <span class="pl-e">class</span>=<span class="pl-s"><span
+                        class="pl-pds">"</span>wakanda<span class="pl-pds">"</span></span>&gt;Save&lt;/<span
+                        class="pl-ent">button</span>&gt;</pre>
+                        </div>
+                        <div class="highlight highlight-source-js"><pre><span class="pl-c"><span class="pl-c">//</span>Password must be 8 characters in length because aes256 encrypt</span>
+<span class="pl-k">var</span> <span class="pl-en">password</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+    <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">'</span>12345678<span
+                                    class="pl-pds">'</span></span>;
+};
+
+<span class="pl-c"><span class="pl-c">//</span>Token its a any word you want, its be used to verify if token received was valid to server</span>
+<span class="pl-k">var</span> <span class="pl-en">token</span> <span class="pl-k">=</span> <span
+                                    class="pl-k">function</span>() {
+    <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">'</span>abcdeifghyjklmnopqrstuvxz<span
+                                    class="pl-pds">'</span></span>;
+};
+
+<span class="pl-c"><span class="pl-c">//</span>password and token must be a callback function, its a design pattern to prevent you from cache the password and token on your</span>
+<span class="pl-c"><span class="pl-c">//</span>page, you must get then of your server when you need it</span>
+
+<span class="pl-c"><span class="pl-c">//</span>You need to set the general wakanda data in this moment too like, client, module, submodule and title;</span>
+<span class="pl-k">var</span> wakanda <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Wakanda</span>(password, token, <span
+                                    class="pl-s"><span class="pl-pds">'</span>http://yourwakandaserver.com<span
+                                    class="pl-pds">'</span></span>); <span class="pl-c"><span class="pl-c">//</span>Server URL to call</span>
+<span class="pl-smi">wakanda</span>.<span class="pl-smi">client</span> <span class="pl-k">=</span> <span
+                                    class="pl-s"><span class="pl-pds">'</span>7894<span class="pl-pds">'</span></span>;
+<span class="pl-smi">wakanda</span>.<span class="pl-smi">module</span> <span class="pl-k">=</span> <span
+                                    class="pl-s"><span class="pl-pds">'</span>Some Module<span
+                                    class="pl-pds">'</span></span>;
+<span class="pl-smi">wakanda</span>.<span class="pl-smi">submodule</span> <span class="pl-k">=</span> <span
+                                    class="pl-s"><span class="pl-pds">'</span>Some Submodule<span
+                                    class="pl-pds">'</span></span>;
+<span class="pl-smi">wakanda</span>.<span class="pl-c1">title</span> <span class="pl-k">=</span> <span
+                                    class="pl-s"><span class="pl-pds">'</span>Some Title<span
+                                    class="pl-pds">'</span></span>;
+
+<span class="pl-c"><span class="pl-c">//</span>Wakanda by default will get property 'alt' of your element and will set as the linkClicked property, </span>
+<span class="pl-c"><span class="pl-c">//</span>if alt property does not exists will get innerHTML;</span></pre>
+                        </div>
+                    </article>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="../assets/js/general/jquery-1.11.1.js" type="text/javascript"></script>
+<script src="../assets/js/dashboard/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../assets/js/dashboard/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../assets/js/dashboard/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../assets/js/dashboard/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFkzijnN2_QHHkKKeb2drAAtIuILX1_wU"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="../assets/js/dashboard/demo.js"></script>
+
+
+</html>

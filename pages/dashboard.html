@@ -174,22 +174,52 @@
 <script>
 
     var map = "";
-
-    $(function () {
-        $("#loadingDiv").load("../includes/wakanda-dashboard/js/jarvis.html");
-
+    function fetchProjects() {
         $.ajax({
-            url: RestAPI.fetchDashboardData,
+            method: 'GET',
+            url: RestAPI.fetchProjects,
+            crossDomain: true,
+            async:"false",
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+            },
+            data: {
+                email: sessionStorage.getItem('wakanda-user-email'),
+                token: sessionStorage.getItem('wakanda-user-token')
+            }
+        }).success(function(data, status, response) {
+            if(response.status === 204) {
+                var msg = "Hi, you don't have registered projects yet, go to projects on left side menu to create your project, after created the statistics of then will apear here.";
+                demo.showNotification("top", "right", msg);
+                removeLoadings();
+            } else if (response.status === 200) {
+                loadDashboard(JSON.parse(data)[0]);
+            }
+        }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
+        });
+    }
+
+    function removeLoadings() {
+        $('.statisticFrequencyLoading').remove();
+        $('.mostfeaturesaccessedLoading').remove();
+        $('.uniqueClientsLoading').remove();
+    }
+
+    let loadDashboard = function (projectData) {
+        $.ajax({
+            url: "https://" + projectData.name + ".herokuapp.com/fetchDashboardData",
             success: function (data) {
                 renderChartMostPopularFeatures(data.mostPopularFeatures);
                 renderChartFrequencyStatistics(data.frequencyReceived);
                 renderUniqueClients(data.uniqueClients);
                 renderTopMostActiveClients(data.topMostActiveClients);
-                removeLoading();
             }
         });
-        effects();
         bindButtons();
+    };
+    $(function () {
+        fetchProjects();
     });
 
     function bindButtons() {
@@ -381,10 +411,6 @@
             result.push('rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + opacity + ')');
         }
         return result;
-    }
-
-    function removeLoading() {
-        $("#loadingDiv").animate({opacity: 0}, 800);
     }
 
     var HashMap = function(){

@@ -19,6 +19,7 @@
     <script src="../includes/wakanda-dashboard/api/jquery-jvectormap-2.0.3.js" charset="utf-8"></script>
     <script src="../includes/wakanda-dashboard/api/maps/jquery.vmap.brazil.js" charset="utf-8"></script>
     <script src="../includes/wakanda-dashboard/api/maps/jquery.vmap.world2.js" charset="utf-8"></script>
+    <script src="../assets/js/general/restapi.js" charset="utf-8"></script>
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet"/>
 
@@ -98,11 +99,43 @@
 <script src="../assets/js/dashboard/demo.js"></script>
 
 <script>
+
+    var mapgo;
     $().ready(function () {
-        var mapgo = demo.initGoogleMaps();
+        mapgo = demo.initGoogleMaps();
+
         $.ajax({
-            url: 'https://wakandakingdom.herokuapp.com/fetchDashboardData',
+            method: 'GET',
+            url: RestAPI.fetchProjects,
+            crossDomain: true,
+            async:"false",
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+            },
+            data: {
+                email: sessionStorage.getItem('wakanda-user-email'),
+                token: sessionStorage.getItem('wakanda-user-token')
+            }
+        }).success(function(data, status, response) {
+            if(response.status === 204) {
+                var msg = "Hi, you don't have registered projects, to start use wakanda, go to Projects on left side menu";
+                demo.showNotification("top", 'right', msg);
+            } else if (response.status === 200) {
+                loadMarkersOnTheMap(JSON.parse(data)[0]);
+            }
+        }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
+        });
+    });
+
+    let loadMarkersOnTheMap = function (projectData) {
+        $.ajax({
+            url: 'https://' + projectData.name + '.herokuapp.com/fetchDashboardData',
             success: function (data) {
+                if (data.statisticByRegion.length == 0) {
+                    var msg = "Hi, it looks like no statistics have been registered yet :(, it's all ok, don't be disappointed, they will appear as points on the map for each unique customer"
+                    demo.showNotification("top", 'right', msg);
+                }
                 data.statisticByRegion.forEach(function (element) {
                     var marker = new google.maps.Marker({
                         position: new google.maps.LatLng(element.latLng[0], element.latLng[1]),
@@ -116,8 +149,8 @@
 
             }
         });
+    };
 
-    });
     function renderMap(dataMarkers) {
         var regionsWithoutDuplicates = [];
         var regionsStyle = {}
