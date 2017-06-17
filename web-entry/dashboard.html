@@ -73,8 +73,7 @@
                     email: email
                 }
             }).success(function (data) {
-                data = data.concat("&email=" + $('#l-form-email').val());
-                $(window).attr('location', '../pages/projects.html?' + data);
+                $(window).attr('location', '../pages/projects.html?email=' + email);
             });
         }, 2000);
     });
