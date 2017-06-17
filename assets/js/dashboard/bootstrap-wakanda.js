@@ -201,12 +201,8 @@ $.urlParam = function(name){
 };
 
 $(document).ready(function() {
-    var intervalEmailUser = setInterval(function() {
-        if(document.getElementById('emailUser')) {
-            $('#emailUser').html($.urlParam("email"));
-            $('#userLogged').html($.urlParam("email").split("@")[0]);
-            clearInterval(intervalEmailUser);
-        }
-    }, 100);
-});
+    if(!sessionStorage.getItem("wakanda-user-email")) {
+        $(window).attr('location', 'redirect-index.html');
+    }
+})
 

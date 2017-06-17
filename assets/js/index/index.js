@@ -71,7 +71,11 @@ jQuery(document).ready(function() {
         clearUserMessage();
 
         let success = function(token) {
-            var data = ("&info=" + token).concat(";").concat($('#l-form-email').val());
+            let email = $('#l-form-email').val();
+            sessionStorage.setItem('wakanda-user-email', email);
+            sessionStorage.setItem('wakanda-user-token', token);
+
+            var data = ("&info=" + token).concat(";").concat(email);
             $(window).attr('location','/pages/redirect-dashboard.html?' + data);
         };
 

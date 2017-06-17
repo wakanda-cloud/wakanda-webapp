@@ -10,7 +10,7 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
+    <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap core CSS     -->
     <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet" />
 
@@ -64,8 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="newProjectArea" class="col-md-8">
-                        <div id="newProjectCard" class="card" style="display:none">
+                    <div id="newProjectArea" class="col-md-8" style="display:none">
+                        <div id="newProjectCard" class="card" >
                             <div class="header">
                                 <h4 class="title">Create new project</h4>
                             </div>
@@ -128,6 +128,7 @@
                                         </div>
                                     </div>
 
+                                    <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">Close</button>
                                     <button type="button" class="btn btn-info btn-fill pull-right" onclick="createProject()">Create</button>
                                     <div class="clearfix"></div>
                                 </form>
@@ -182,8 +183,8 @@
                     "cache-control": "no-cache"
                 },
                 data: {
-                    email: $('#emailUser').html().replace("%40", "@"),
-                    token: "a"
+                    email: sessionStorage.getItem('wakanda-user-email'),
+                    token: sessionStorage.getItem('wakanda-user-token')
                 }
             }).success(function(data, status) {
                 successLoadProjects(status, data);
@@ -220,17 +221,22 @@
         };
         function addProject() {
             closeHelpMessage();
-            $('#newProjectCard').show();
+            $('#newProjectArea').fadeIn();
         }
 
         var afterSuccessOnCreateProject = function () {
             $('#loadingCreateProject').hide();
             $('#createAppLog').hide();
             demo.showNotification('top', 'left', "Congratulations, you create your first project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.");
-
-            var projectName = $('#projectName').val();
-            addProjectRow(projectName);
         };
+
+        function hideCreateProjectArea() {
+            let $newProjectArea = $('#newProjectArea');
+            $newProjectArea.fadeOut(400, function() {
+                $newProjectArea.hide();
+            });
+
+        }
 
         function createProject() {
             var projectName = $('#projectName').val();
@@ -244,7 +250,8 @@
                     "cache-control": "no-cache"
                 },
                 "data": JSON.stringify({
-                    ownerEmail: $('#emailUser').html(),
+                    ownerEmail: sessionStorage.getItem('wakanda-user-email'),
+                    token: sessionStorage.getItem('wakanda-user-token'),
                     name: projectName,
                     company: $('#company').val(),
                     zipcode: $('#zipcode').val(),
@@ -258,7 +265,7 @@
 
             $.ajax(settings).success(function (logs) {
                 afterSuccessOnCreateProject();
-                $('#newProjectCard').hide();
+                hideCreateProjectArea();
             }).error(function(jqxHR, textStatus) {
                 afterSuccessOnCreateProject();
                 $('#newProjectCard').hide();
@@ -281,6 +288,7 @@
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
+    <script src="../assets/js/general/restapi.js"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/dashboard/demo.js"></script>
