@@ -1,0 +1,30 @@
+.jvectormap-container {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.jvectormap-container svg {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.jvectormap-tip {
+    color: white !important;
+}
+
+.center {
+    width: 100%;
+    height: 40%;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.sk-cube-grid .sk-cube {
+    background-color: #9088ec !important;
+}

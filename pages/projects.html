@@ -12,25 +12,25 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="../assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/animate.min.css" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="../assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-    <link href="../assets/css/wakanda.css" rel="stylesheet"/>
-    <link href="../assets/css/buttons.css" rel="stylesheet"/>
-    <link href="../assets/css/loading-spinner.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/bootstrap-wakanda.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/wakanda.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/buttons.css" rel="stylesheet"/>
+    <link href="../assets/css/general/loading-spinner.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/demo.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body onload="loadProjects()">
 
@@ -51,7 +51,7 @@
                         <div class="card" >
                             <div class="header">
                                 <h4 class="title">Projects </h4>
-                                <button class="button button-action button-circle button-small"
+                                <button class="button button-royal button-circle button-small"
                                         style="position: absolute; right: 30px; margin-top:-28px;"
                                         onclick="addProject()">
                                     <i class="fa fa-plus"></i>
@@ -65,37 +65,6 @@
                         </div>
                     </div>
                     <div id="newProjectArea" class="col-md-8">
-                        <div class="help-message">
-                            <p>
-                                Hi, on this page you will manage your projects, you can have 2 projects for account, if you want more you can upgrade to PRO.
-                                <br>To create a new new project click on plus button on your left.
-                            </p>
-                        </div>
-                        <div id="loadingCreateProject" style="display:none">
-                            <div class="loading-spinner card" style="min-height:400px">
-                                <span class="loadingProject" style="margin-left:55px;color:#943bea;font-size:30px;">
-                                    Your project is being created, please wait...
-                                </span>
-                                <div class="loadingProject sk-cube-grid">
-                                    <div class="sk-cube sk-cube1"></div>
-                                    <div class="sk-cube sk-cube2"></div>
-                                    <div class="sk-cube sk-cube3"></div>
-                                    <div class="sk-cube sk-cube4"></div>
-                                    <div class="sk-cube sk-cube5"></div>
-                                    <div class="sk-cube sk-cube6"></div>
-                                    <div class="sk-cube sk-cube7"></div>
-                                    <div class="sk-cube sk-cube8"></div>
-                                    <div class="sk-cube sk-cube9"></div>
-                                </div>
-                                <div id="createAppLog" class="card"
-                                     style="min-height:230px;width:95%;margin-left:15px
-                                            ;font-size:11px;overflow-y:auto;padding-left:8px;max-height:230px;
-                                            display: flex;
-                                            flex-direction: column-reverse;">
-                                </div>
-                            </div>
-                        </div>
-
                         <div id="newProjectCard" class="card" style="display:none">
                             <div class="header">
                                 <h4 class="title">Create new project</h4>
@@ -120,8 +89,8 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Decrypt Key (8 characters)</label>
-                                                <input id="decryptKey" type="text" class="form-control" placeholder="xOpT89t4">
+                                                <label>Decrypt Key</label>
+                                                <input id="decryptKey" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -179,9 +148,34 @@
 </body>
     <script>
         function loadProjects() {
+            let addProjectsOnList = function (data) {
+                let array = JSON.parse(data);
+                array.forEach(function (element, index) {
+                    addProjectRow(element.company + " / " + element.name);
+                });
+            };
+
+            let showHelp = function () {
+                const text = "Hi, on this page you will manage your projects, you can have 2 projects for account, " +
+                "if you want more you can upgrade to PRO." +
+                "<br><br>To create a new new project click on plus button on your left."
+                demo.showNotification('top', 'right', text);
+            };
+
+            var successLoadProjects = function (status, data) {
+                if (status !== "nocontent") {
+                    if (!isJson(data)) {
+                        showHelp();
+                        return;
+                    }
+
+                    addProjectsOnList(data);
+                }
+            };
+
             $.ajax({
                 method: 'GET',
-                url: 'https://wakandaserver.herokuapp.com/getProjects',
+                url: 'http://localhost:3000/projects',
                 crossDomain: true,
                 headers: {
                     "content-type": "application/x-www-form-urlencoded",
@@ -192,14 +186,18 @@
                     token: "a"
                 }
             }).success(function(data, status) {
-                if(status !== "nocontent") {
-                   closeHelpMessage();
-                    JSON.parse(data).forEach(function (element, index) {
-                        addProjectRow(element.company + " / " + element.name);
-                    });
-                }
+                successLoadProjects(status, data);
             }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
             });
+        }
+
+        function isJson(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
         }
 
         function addProjectRow(projectName) {
@@ -217,7 +215,7 @@
         };
 
         function closeHelpMessage() {
-            $('.help-message').hide();
+            $('.close').click();
             $('.projectForm').show();
         };
         function addProject() {
@@ -228,25 +226,18 @@
         var afterSuccessOnCreateProject = function () {
             $('#loadingCreateProject').hide();
             $('#createAppLog').hide();
-            $('.help-message').show();
-            $('.help-message p').html("Congratulations, you create your first project, now you can ever came to this page to: " +
-                                     "<br><br> - Update any project data on edit button in left side of your screen." +
-                                     "<br> - Add new projects on plus button on your left, remember you can create at most 2 projects without PRO.");
+            demo.showNotification('top', 'left', "Congratulations, you create your first project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.");
 
             var projectName = $('#projectName').val();
             addProjectRow(projectName);
         };
 
-        var logInterval;
-
         function createProject() {
-            $('#newProjectCard').hide();
-            $('#loadingCreateProject').show();
             var projectName = $('#projectName').val();
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://wakandaserver.herokuapp.com/generate",
+                "url": "http://localhost:5000/generate",
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json",
@@ -265,55 +256,37 @@
                 })
             };
 
-            logInterval = setInterval(function() {
-                $.ajax({
-                    method: 'GET',
-                    url: 'https://wakandaserver.herokuapp.com/getLogs',
-                    crossDomain: true,
-                    headers: {
-                        "content-type": "application/x-www-form-urlencoded",
-                        "cache-control": "no-cache"
-                    },
-                    data: {
-                        email: $('#emailUser').html(),
-                        token: ""
-                    }
-                }).success(function(data) {
-                   $('#createAppLog').append(data.replace("\n", "<br>").replace("\t", "<br>").replace("\r", "<br>"));
-                });
-            }, 1000);
-
             $.ajax(settings).success(function (logs) {
-                setTimeout(function() {
-                    clearInterval(logInterval);
-                    afterSuccessOnCreateProject();
-                }, 1000);
-            }).error(function() {
-                alert('Ops aconteceu algum erro' + response);
+                afterSuccessOnCreateProject();
+                $('#newProjectCard').hide();
+            }).error(function(jqxHR, textStatus) {
+                afterSuccessOnCreateProject();
+                $('#newProjectCard').hide();
+                //alert('Ops aconteceu algum erro: ' + jqxHR.responseText);
             });
         }
     </script>
     <!--   Core JS Files   -->
-    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/js/general/jquery-1.11.1.js" type="text/javascript"></script>
+	<script src="../assets/js/dashboard/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="../assets/js/bootstrap-checkbox-radio-switch.js"></script>
+	<script src="../assets/js/dashboard/bootstrap-checkbox-radio-switch.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="../assets/js/chartist.min.js"></script>
+	<script src="../assets/js/dashboard/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="../assets/js/bootstrap-notify.js"></script>
+    <script src="../assets/js/dashboard/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="../assets/js/light-bootstrap-dashboard.js"></script>
+	<script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="../assets/js/demo.js"></script>
+	<script src="../assets/js/dashboard/demo.js"></script>
 
 
 </html>

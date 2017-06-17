@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+	<link rel="icon" type="image/png" href="../assets/img/wicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Light Bootstrap Dashboard by Creative Tim</title>
@@ -10,26 +10,44 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
+    <link rel="stylesheet" href="../includes/wakanda-dashboard/js/dashboard.css" type="text/css" media="screen"/>
+    <script src="../includes/wakanda-dashboard/api/typed.min.js"></script>
+    <script src="../includes/wakanda-dashboard/api/chart.bundle.js"></script>
+    <script src="../includes/wakanda-dashboard/api/moment.js"></script>
+    <script src="../includes/wakanda-dashboard/js/dashboardEvents.js"></script>
+    <link rel="stylesheet" href="../assets/css/general/loading-spinner.css">
     <!-- Bootstrap core CSS     -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="../assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/animate.min.css" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="../assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+    <link href="../assets/css/dashboard/bootstrap-wakanda.css" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/demo.css" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="../assets/css/dashboard/pe-icon-7-stroke.css" rel="stylesheet" />
 
+    <script src="../assets/js/dashboard/bootstrap.min.js" type="text/javascript"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="../assets/js/dashboard/bootstrap-checkbox-radio-switch.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/dashboard/bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="../assets/js/dashboard/demo.js"></script>
 </head>
 <body>
 
@@ -43,254 +61,354 @@
         <nav class="navbar navbar-default navbar-fixed" data-include="navbar">
         </nav>
 
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Most popular features</h4>
+                                <p class="category">Everytime</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                <div id="mostfeaturesaccessed">
+                                    <div class="mostfeaturesaccessedLoading sk-cube-grid">
+                                        <div class="sk-cube sk-cube1"></div>
+                                        <div class="sk-cube sk-cube2"></div>
+                                        <div class="sk-cube sk-cube3"></div>
+                                        <div class="sk-cube sk-cube4"></div>
+                                        <div class="sk-cube sk-cube5"></div>
+                                        <div class="sk-cube sk-cube6"></div>
+                                        <div class="sk-cube sk-cube7"></div>
+                                        <div class="sk-cube sk-cube8"></div>
+                                        <div class="sk-cube sk-cube9"></div>
                                     </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                    <div id="mostfeaturesaccessedDiv" style="display:none;padding-left:15px;margin-right:10px;">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card ">
+                    <div class="col-md-4">
+                        <div class="card">
                             <div class="header">
-                                <h4 class="title">2014 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Unique clients</h4>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
+                                <div class="uniqueClientsLoading sk-cube-grid">
+                                    <div class="sk-cube sk-cube1"></div>
+                                    <div class="sk-cube sk-cube2"></div>
+                                    <div class="sk-cube sk-cube3"></div>
+                                    <div class="sk-cube sk-cube4"></div>
+                                    <div class="sk-cube sk-cube5"></div>
+                                    <div class="sk-cube sk-cube6"></div>
+                                    <div class="sk-cube sk-cube7"></div>
+                                    <div class="sk-cube sk-cube8"></div>
+                                    <div class="sk-cube sk-cube9"></div>
+                                </div>
+                                <div id="uniqueClients" style="display:none;">
+                                    <div id="uniqueClientsDiv" style="padding-left:15px;margin-right:10px;">
+                                        <h1 class="title" style="font-weight:bold;color:#333;">
+                                            <span id="uniqueClientsTotal">259</span>
+                                            <span id="uniqueNewClients" style="margin-top:10px;font-size:20px;float:right;color:#87CB16">+9 added<span style="font-color:15px !important;color:#333"></span></span>
+                                        </h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card ">
+                        <div class="card">
                             <div class="header">
-                                <h4 class="title">Tasks</h4>
-                                <p class="category">Backend development</p>
+                                <h4 class="title">Top 5 most active clients<a style="float:right;font-size:15px;"href="">Filter</a></h4>
                             </div>
                             <div class="content">
-                                <div class="table-full-width">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox">
-                                                    </label>
-                                                </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                                                    </label>
-                                                </td>
-                                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox" checked="">
-                                                    </label>
-                                                </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox">
-                                                    </label>
-                                                </td>
-                                                <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox">
-                                                    </label>
-                                                </td>
-                                                <td>Read "Following makes Medium better"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox">
-                                                    </label>
-                                                </td>
-                                                <td>Unfollow 5 enemies from twitter</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="footer">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                <div id="mostActive">
+                                    <div id="mostActiveDiv" style="margin-right:10px;color:#333!important">
+                                        <!--#FB404B, "#1DC7EA", "#FFA534", #87CB16!-->
+                                        <p style="padding-left:15px;font-weight: bold;background-color:#FB404B"></p>
+                                        <p style="padding-left:15px;font-weight: bold;background-color:#FFA534"></p>
+                                        <p style="padding-left:15px;font-weight: bold;background-color:#87CB16"></p>
+                                        <p style="padding-left:15px;font-weight: bold;background-color:#1DC7EA"></p>
+                                        <p style="padding-left:15px;font-weight: bold;background-color:#777"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Frequency of received statistics</h4>
+                                <p class="category">Last week</p>
+                            </div>
+                            <div class="content" style="height:290px">
+                                <div class="statisticFrequencyLoading sk-cube-grid">
+                                    <div class="sk-cube sk-cube1"></div>
+                                    <div class="sk-cube sk-cube2"></div>
+                                    <div class="sk-cube sk-cube3"></div>
+                                    <div class="sk-cube sk-cube4"></div>
+                                    <div class="sk-cube sk-cube5"></div>
+                                    <div class="sk-cube sk-cube6"></div>
+                                    <div class="sk-cube sk-cube7"></div>
+                                    <div class="sk-cube sk-cube8"></div>
+                                    <div class="sk-cube sk-cube9"></div>
+                                </div>
+                                <div id="statisticFrequency" style="display:none">
+                                    <canvas id="frequencyChart" width="400" height="150"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>R
+        </div>
 
         <footer class="footer" data-include="footer">
         </footer>
 
     </div>
 </div>
-
-
+</div>
 </body>
-
-    <!--   Core JS Files   -->
-    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="../assets/js/bootstrap-checkbox-radio-switch.js"></script>
-
-	<!--  Charts Plugin -->
-	<script src="../assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="../assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="../assets/js/light-bootstrap-dashboard.js"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="../assets/js/demo.js"></script>
-
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-	</script>
-
 </html>
+<script>
+
+    var map = "";
+
+    $(function () {
+        $("#loadingDiv").load("../includes/wakanda-dashboard/js/jarvis.html");
+
+        $.ajax({
+            url: 'https://wakandakingdom.herokuapp.com/fetchDashboardData',
+            success: function (data) {
+                renderChartMostPopularFeatures(data.mostPopularFeatures);
+                renderChartFrequencyStatistics(data.frequencyReceived);
+                renderUniqueClients(data.uniqueClients);
+                renderTopMostActiveClients(data.topMostActiveClients);
+                removeLoading();
+            }
+        });
+        effects();
+        bindButtons();
+    });
+
+    function bindButtons() {
+        var dashboardEvents = new DashboardEvents();
+        $('#nextWeek').bind('click', dashboardEvents.frequencyNextWeek);
+        $('#previousWeek').bind('click', dashboardEvents.frequencyPreviousWeek);
+
+        $('#showMorePopularFeatures').bind('click', function(e) {
+            dashboardEvents.showMoreMostPopularFeatures(e, function(data) {
+                renderChartMostPopularFeatures(data);
+            })
+        });
+    }
+
+    function renderTopMostActiveClients(topMostActiveClients) {
+        var mostActiveContainer = $('#mostActiveDiv');
+        topMostActiveClients.forEach(function(element, index) {
+            let registeredStatistics = "Statistics registered: " + element.statisticData.length;
+
+            let listItemClient = mostActiveContainer.find('p').get(index);
+            listItemClient.setAttribute('title', registeredStatistics)
+            listItemClient.innerHTML = element.client;
+        });
+    }
+
+    function renderUniqueClients(uniqueClients) {
+        $('.uniqueClientsLoading').remove();
+        $('#uniqueClients').show();
+        $('#uniqueClientsTotal').html(uniqueClients.total);
+        $('#uniqueNewClients').html("+" + uniqueClients.newClients + "<span style='font-size:12px;font-weight:normal;color:#777; !important;'> on last week</span>");
+    }
+
+    function renderChartFrequencyStatistics(data) {
+        $('.statisticFrequencyLoading').remove();
+        $('#statisticFrequency').show();
+        var cartesianPlanChart = [];
+
+        var chartDateFormat = 'YYYY-MM-DD';
+        for(var i = 0; i < data.length; i++) {
+            var iterElement = data[i];
+            var firstElement = iterElement[0];
+            cartesianPlanChart.push({
+                x: moment(firstElement.capturedDate, "DD/MM/YYYY - HH:mm:ss").format(chartDateFormat),
+                y: iterElement.length
+            });
+        }
+
+        cartesianPlanChart.sort(function(element, otherElement) {
+            return moment(element.x, chartDateFormat).isAfter(moment(otherElement.x, chartDateFormat));
+        });
+
+        var color = Chart.helpers.color;
+        var chartFrequency = new Chart($('#frequencyChart'), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Statistics registered on this day",
+                    backgroundColor: color('#87CB16').rgbString(),
+                    borderColor: '#FFA534',
+                    fill: false,
+                    data: cartesianPlanChart,
+                }],
+            },
+            options: {
+                responsive: true,
+                title:{
+                    display:true
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'time',
+                        unitStepSize: 1,
+                        time: {
+                            displayFormats: {
+                                'day': 'dddd'
+                            },
+                            unit: 'day',
+                        },
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Number of statistics'
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    function renderChartMostPopularFeatures(data) {
+        $('#mostfeaturesaccessedChart').remove();
+        $('.mostfeaturesaccessedLoading').remove();
+        $('#mostfeaturesaccessedDiv').show();
+
+        var canvas = $('<canvas id="mostfeaturesaccessedChart" width="400" height="235"></canvas>');
+        canvas.appendTo($('#mostfeaturesaccessedDiv'));
+
+        var chartID = 'mostfeaturesaccessedChart';
+        var ctx = $("#" + chartID);
+
+        Chart.defaults.global.defaultFontColor = '#777';
+        Chart.defaults.global.defaultFontFamily = '"Roboto","Helvetica"';
+        Chart.defaults.global.legend.display = false;
+
+        let settingsChart = {
+            type: 'horizontalBar',
+            data: {
+                datasets: [{
+                    label: 'Quantidade de estatisticas registradas',
+                    data: [19, 17, 15, 14, 13, 12, 11, 10, 9],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: "black", fontSize: 12
+                    }
+                },
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        maxTicksLimit: 10,
+                    }
+                }],
+                scales: {}
+            }
+        };
+
+        var labels = [];
+        var chartData = [];
+        for(let i = 0; i < data.length; i++) {
+            var element = data[i];
+            var firstIteratedElement = element[0];
+            labels.push(firstIteratedElement.module + " - " + firstIteratedElement.title + " - " + firstIteratedElement.linkClicked);
+            chartData.push(element.length);
+        }
+
+        var generatedColors = getRandomColor(labels.length);
+        var backgroundColors = hexToRgbA(generatedColors,  1);
+        var borderColors = hexToRgbA(generatedColors,  1);
+
+        settingsChart.data.labels = labels;
+        settingsChart.data.datasets[0].data = chartData;
+        settingsChart.data.datasets[0].backgroundColor = backgroundColors;
+        settingsChart.data.datasets[0].borderColor = borderColors;
+
+        new Chart(ctx, settingsChart);
+    }
+
+    function getRandomColor(colorQuantity) {
+        var colors = [];
+        var colorsAlowed = ["#FB404B", "#1DC7EA", "#FFA534", "#87CB16"];
+        var count = 0;
+        for(var i = 0; i < colorQuantity; i++ ) {
+            while(colors.length < colorQuantity) {
+                if(count >= colorsAlowed.length) {
+                    count = 0;
+                }
+                colors.push(colorsAlowed[count]);
+                count++;
+            }
+        }
+        return colors;
+    }
+
+    function validateHex (hex) {
+        if (!/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+            throw new Error('Bad Hex');
+        }
+    };
+    function hexToRgbA(hexArray, opacity){
+        var result = [];
+        for(var z = 0; z < hexArray.length; z++) {
+            var hex = hexArray[z];
+            validateHex(hex);
+
+            var c = hex.substring(1).split('');
+            if(c.length === 3){
+                c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c = '0x' + c.join('');
+            result.push('rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + opacity + ')');
+        }
+        return result;
+    }
+
+    function removeLoading() {
+        $("#loadingDiv").animate({opacity: 0}, 800);
+    }
+
+    var HashMap = function(){
+        this._dict = [];
+    };
+    HashMap.prototype._get = function(key){
+        for(var i=0, couplet; couplet = this._dict[i]; i++){
+            if(couplet[0] === key){
+                return couplet;
+            }
+        }
+    };
+    HashMap.prototype.put = function(key, value){
+        var couplet = this._get(key);
+        if(couplet){
+            couplet[1] = value;
+        }else{
+            this._dict.push([key, value]);
+        }
+        return this; // for chaining
+    };
+    HashMap.prototype.get = function(key){
+        var couplet = this._get(key);
+        if(couplet){
+            return couplet[1];
+        }
+    };
+
+</script>
