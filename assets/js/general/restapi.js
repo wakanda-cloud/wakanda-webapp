@@ -1,4 +1,4 @@
-const RestAPI = function(){}
+var RestAPI = function(){}
 
 RestAPI.generateHerokuInstance = "https://wakanda-instance-generator/generate";
 RestAPI.fetchProjects = "https://wakanda-instance-generator/projects";
