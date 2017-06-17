@@ -28,8 +28,8 @@
 
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="../assets/css/dashboard/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body onload="loadProjects()">
@@ -175,7 +175,7 @@
 
             $.ajax({
                 method: 'GET',
-                url: 'http://localhost:3000/projects',
+                url: RestAPI.fetchProjects,
                 crossDomain: true,
                 headers: {
                     "content-type": "application/x-www-form-urlencoded",
@@ -237,7 +237,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://localhost:5000/generate",
+                "url": RestAPI.generateHerokuInstance,
                 "method": "POST",
                 "headers": {
                     "content-type": "application/json",

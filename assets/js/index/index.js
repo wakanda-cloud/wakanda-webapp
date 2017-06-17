@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
 
         $.ajax({
             "crossDomain": true,
-            "url": "https://wakanda-security.herokuapp.com/registerUser",
+            "url": RestAPI.registerUser,
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
@@ -88,7 +88,7 @@ jQuery(document).ready(function() {
 
         let ajaxData = {
             "crossDomain": true,
-            "url": "https://wakanda-security.herokuapp.com/login",
+            "url": RestAPI.login,
             "method": "POST",
             "headers": {
                 "content-type": "application/x-www-form-urlencoded",
