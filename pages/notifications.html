@@ -24,14 +24,13 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/dashboard/demo.css" rel="stylesheet" />
 
-    <link href="../assets/js/dashboard/statisticExample.js" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="../assets/css/dashboard/pe-icon-7-stroke.css" rel="stylesheet" />
 
 </head>
-<body>
+<body onload="onload()">
 
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-5.jpg">
@@ -245,4 +244,19 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/dashboard/demo.js"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/aes.js"></script><br>
+    <script src="../assets/js/dashboard/statisticExample.js"></script>
 </html>
+<script>
+    var wakanda;
+    function onload() {
+        wakanda = new Wakanda("12345678", "f26e14d40acac97db442714eac6ff187");
+        wakanda.client = "Wakanda";
+        wakanda.module = "Dashboard";
+        wakanda.submodule = "Widgets";
+        wakanda.title=  "Frequency Statistics";
+        wakanda.linkClicked = "Show more";
+    }
+</script>

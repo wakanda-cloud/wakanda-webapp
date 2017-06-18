@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 class Wakanda {
 
     constructor(encryptkey, apikey) {
-        this.server = "https://wakanda-statistic-receiver/statistics";
+        this.server = "http://wakanda-statistic-receiver/statistics";
         this.async = true;
         this.encryptkey = encryptkey;
         this.apiKey = apikey;
@@ -15,31 +15,35 @@ class Wakanda {
     }
 
     fireRegisterStatistic(context, event) {
-        var element = event.currentTarget;
-        var altAttribute = element.attributes['alt'];
-        var data = {
+        var altAttribute = event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked;
+        var json = {
             apiKey: context.apiKey,
             data : context.encrypt(JSON.stringify({
                 "client": context.client,
                 "module": context.module,
                 "submodule": context.submodule,
                 "title": context.title,
-                "linkClicked": altAttribute === undefined ? element.innerHTML.trim() : altAttribute.value,
-                "token": context.token.call(this)
+                "linkClicked": altAttribute,
             }))
+        };
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:4000/statistics",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json",
+                "cache-control": "no-cache",
+                "postman-token": "d4db44ae-d915-c323-aa56-feb9289cfdef"
+            },
+            "processData": false,
+            "data": JSON.stringify(json)
         }
 
-        jQuery.ajax({
-            "async": this._async,
-            "crossDomain": true,
-            "headers" : {
-                "content-json" : "application/json"
-            },
-            "url": context.server,
-            "type": "POST",
-            "data": JSON.stringify(data)
+        $.ajax(settings).done(function (response) {
+            console.log(response);
         });
-
     }
     set client(client) {
         this._client = client;
