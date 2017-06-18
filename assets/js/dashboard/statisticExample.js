@@ -22,7 +22,7 @@ class Wakanda {
             "submodule": context.submodule,
             "title": context.title,
             "linkClicked": event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked,
-            "location": context.location
+            "location": context.geoLocation
         };
 
         let json = {
@@ -53,10 +53,10 @@ class Wakanda {
         let that = this;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                that.geoLocation({
+                that.geoLocation = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
-                });
+                };
             }, function () {
                 console.log("Geo location not found");
             });
