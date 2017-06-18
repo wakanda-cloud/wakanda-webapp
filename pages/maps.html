@@ -130,9 +130,9 @@
 
     let loadMarkersOnTheMap = function (projectData) {
         $.ajax({
-            url: 'https://' + projectData.name + '.herokuapp.com/fetchDashboardData',
+            url: projectData.url + '/fetchDashboardData',
             success: function (data) {
-                if (data.statisticByRegion.length == 0) {
+                if (data.statisticByRegion.length === 0) {
                     var msg = "Hi, it looks like no statistics have been registered yet :(, it's all ok, don't be disappointed, they will appear as points on the map for each unique customer"
                     demo.showNotification("top", 'right', msg);
                 }
