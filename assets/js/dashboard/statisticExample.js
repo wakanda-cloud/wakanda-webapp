@@ -9,7 +9,7 @@ class Wakanda {
         this.apiKey = apikey;
 
         var wakanda = this;
-        jQuery(".wakanda").bind('click', function(event) {
+        jQuery(".wakanda").bind('click', function (event) {
             wakanda.fireRegisterStatistic(wakanda, event);
         });
     }
@@ -18,12 +18,13 @@ class Wakanda {
         var altAttribute = event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked;
         var json = {
             apiKey: context.apiKey,
-            data : context.encrypt(JSON.stringify({
+            data: context.encrypt(JSON.stringify({
                 "client": context.client,
                 "module": context.module,
                 "submodule": context.submodule,
                 "title": context.title,
                 "linkClicked": altAttribute,
+                "location": context.getGeoLocation()
             }))
         };
 
@@ -45,6 +46,28 @@ class Wakanda {
             console.log(response);
         });
     }
+
+    getGeoLocation() {
+        if (!this.sendGeoLocation) {
+            return "";
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos.lat);
+                console.log(pos.lng);
+            }, function () {
+                console.log("Geo location not found");
+            });
+        } else {
+            console.log("Geo location not supported");
+        }
+    }
+
     set client(client) {
         this._client = client;
     }
@@ -87,6 +110,14 @@ class Wakanda {
 
     set async(isAsync) {
         this._async = isAsync;
+    }
+
+    set sendGeoLocation(sendGeoLocation) {
+        this._sendGeoLocation = sendGeoLocation;
+    }
+
+    get sendGeoLocation() {
+        return this._sendGeoLocation;
     }
 
     encrypt(text) {
