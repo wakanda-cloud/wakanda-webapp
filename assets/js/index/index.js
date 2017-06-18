@@ -22,12 +22,18 @@ jQuery(document).ready(function() {
 
     $('#signupBtn').on('click', function() {
         let success = function(token) {
+            $('#textRegisterBtn').show();
+            $('#loadingRegisterSpinner').hide();
+
             $('.show-login-form').click();
             setTimeout(function() {
                 $('.show-info-message').addClass('information-message')
                 $('.show-info-message').show();
             }, 200);
         };
+
+        $('#textRegisterBtn').hide();
+        $('#loadingRegisterSpinner').show();
 
         $.ajax({
             "crossDomain": true,
@@ -47,6 +53,8 @@ jQuery(document).ready(function() {
         }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
             console.log(jqXHR.responseText);
             alert("Wrong credentials: " + jqXHR.responseJSON.message);
+            $('#textRegisterBtn').show();
+            $('#loadingRegisterSpinner').hide();
         });
     });
 
