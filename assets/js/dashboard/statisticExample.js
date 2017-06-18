@@ -15,17 +15,19 @@ class Wakanda {
     }
 
     fireRegisterStatistic(context, event) {
-        var altAttribute = event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked;
-        var json = {
+        context = this instanceof Wakanda ? this : context;
+        let jsonData = {
+            "client": context.client,
+            "module": context.module,
+            "submodule": context.submodule,
+            "title": context.title,
+            "linkClicked": event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked,
+            "location": context.location
+        };
+
+        let json = {
             apiKey: context.apiKey,
-            data: context.encrypt(JSON.stringify({
-                "client": context.client,
-                "module": context.module,
-                "submodule": context.submodule,
-                "title": context.title,
-                "linkClicked": altAttribute,
-                "location": context.getGeoLocation()
-            }))
+            data: context.encrypt(JSON.stringify(jsonData))
         };
 
         var settings = {
@@ -47,18 +49,14 @@ class Wakanda {
         });
     }
 
-    getGeoLocation() {
-        if (!this.sendGeoLocation) {
-            return "";
-        }
-
+    configGeolocation() {
+        let that = this;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
+                that.geoLocation({
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
-                };
-                return pos.lat + ";" + pos.lng;
+                });
             }, function () {
                 console.log("Geo location not found");
             });
@@ -111,12 +109,21 @@ class Wakanda {
         this._async = isAsync;
     }
 
-    set sendGeoLocation(sendGeoLocation) {
-        this._sendGeoLocation = sendGeoLocation;
+    set geoLocation(geolocation) {
+        this._lat = geolocation.lat;
+        this._lng = geolocation.lng;
     }
 
-    get sendGeoLocation() {
-        return this._sendGeoLocation;
+    get geoLocation() {
+        return this._lat && this._lng ? this._lat + ";" + this._lng : undefined;
+    }
+
+    set location(location) {
+        this._location = location;
+    }
+
+    get location() {
+        return this._location;
     }
 
     encrypt(text) {
