@@ -58,8 +58,7 @@ class Wakanda {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                console.log(pos.lat);
-                console.log(pos.lng);
+                return pos.lat + ";" + pos.lng;
             }, function () {
                 console.log("Geo location not found");
             });
