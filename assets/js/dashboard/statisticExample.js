@@ -3,7 +3,7 @@
 class Wakanda {
 
     constructor(encryptkey, apikey) {
-        this.server = "http://wakanda-statistic-receiver/statistics";
+        this.server = "https://wakanda-statistic-receiver/statistics";
         this.async = true;
         this.encryptkey = encryptkey;
         this.apiKey = apikey;
