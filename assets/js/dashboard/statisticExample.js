@@ -30,7 +30,7 @@ class Wakanda {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:4000/statistics",
+            "url": context.server,
             "method": "POST",
             "headers": {
                 "content-type": "application/json",
