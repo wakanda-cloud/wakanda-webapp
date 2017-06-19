@@ -200,9 +200,13 @@ $.urlParam = function(name){
     }
 };
 
+var redirectIndex = function () {
+    $(window).attr('location', 'redirect-index.html');
+};
+
 $(document).ready(function() {
     if(!sessionStorage.getItem("wakanda-user-email")) {
-      $(window).attr('location', 'redirect-index.html');
+      redirectIndex();
     }
 });
 

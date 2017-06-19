@@ -196,7 +196,10 @@
                 }
             }).success(function(data, status) {
                 successLoadProjects(status, data);
-            }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
+            }).error(function(jqXHR, textStatus, response, thrownError) {
+                if(response.statusCode === 401) {
+                    redirectIndex();
+                }
             });
         }
 
@@ -283,8 +286,13 @@
             $.ajax(settings).success(function (logs) {
                 demo.showNotification('top', 'left', "Ok, your app will be deleted, wait some seconds for him disappear.");
                 hideCreateProjectArea();
-            }).error(function(jqxHR, textStatus) {
-                demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
+            }).error(function(jqxHR, textStatus, response) {
+                if(response.statusCode === 401) {
+                    redirectIndex();
+                } else {
+                    demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
+                }
+
             });
         }
 
@@ -314,9 +322,13 @@
             $.ajax(settings).success(function (logs) {
                 afterSuccessOnCreateProject();
                 hideCreateProjectArea();
-            }).error(function(jqxHR, textStatus) {
-                demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
-                $('#newProjectCard').hide();
+            }).error(function(jqxHR, textStatus, response) {
+                if(response.statusCode === 401) {
+                    redirectIndex();
+                } else {
+                    demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
+                    $('#newProjectCard').hide();
+                }
             });
         }
     </script>
