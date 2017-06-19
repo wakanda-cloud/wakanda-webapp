@@ -267,19 +267,14 @@
         }
 
         function deleteProject() {
-            let settings = {
-                method: 'DELETE',
-                url: RestAPI.projects,
-                crossDomain: true,
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded",
-                },
-                data: {
-                    email: sessionStorage.getItem('wakanda-user-email'),
-                    token: sessionStorage.getItem('wakanda-user-token'),
-                    apiKey: $('#apiKey').val()
-                }
-            };
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": RestAPI.projects + "?email=" + sessionStorage.getItem("wakanda-user-email")
+                                        + "&token=" + sessionStorage.getItem("wakanda-user-token")
+                                        +" &apiKey=" + $('#apiKey').val(),
+                "method": "DELETE"
+            }
 
             $.ajax(settings).success(function (logs) {
                 demo.showNotification('top', 'left', "Ok, your app will be deleted, wait some seconds for him disappear.");
