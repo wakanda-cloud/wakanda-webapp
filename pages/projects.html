@@ -268,19 +268,17 @@
 
         function deleteProject() {
             let settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": RestAPI.projects,
-                "method": "DELETE",
-                "headers": {
-                    "content-type": "application/json",
-                    "cache-control": "no-cache"
+                method: 'DELETE',
+                url: RestAPI.projects,
+                crossDomain: true,
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded",
                 },
-                "data": JSON.stringify({
-                    ownerEmail: sessionStorage.getItem('wakanda-user-email'),
+                data: {
+                    email: sessionStorage.getItem('wakanda-user-email'),
                     token: sessionStorage.getItem('wakanda-user-token'),
-                    apiKey: $('#apiKey').val(),
-                })
+                    apiKey: $('#apiKey')
+                }
             };
 
             $.ajax(settings).success(function (logs) {
