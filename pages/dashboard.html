@@ -337,13 +337,11 @@
             },
             options: {
                 legend: {
-                    display : false,
                     labels: {
-                        display: false
+                        fontColor: "black", fontSize: 12
                     }
                 },
                 yAxes: [{
-                    display: false,
                     ticks: {
                         beginAtZero: true
                     }
@@ -362,7 +360,11 @@
         for(let i = 0; i < data.length; i++) {
             var element = data[i];
             var firstIteratedElement = element[0];
-            labels.push(firstIteratedElement.module + " - " + firstIteratedElement.title + " - " + firstIteratedElement.linkClicked);
+            let items = firstIteratedElement.module + " - " + firstIteratedElement.title + " - " + firstIteratedElement.linkClicked;
+            if(items.length > 25) {
+                items = items.substr(0, 25) + "..."
+            }
+            labels.push(items);
             chartData.push(element.length);
         }
 
