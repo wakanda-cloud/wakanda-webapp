@@ -22,19 +22,17 @@ jQuery(document).ready(function() {
 
     $('#signupBtn').on('click', function() {
         let success = function(token) {
-            $('#textRegisterBtn').show();
-            $('#loadingRegisterSpinner').hide();
-
-            $('.show-login-form').click();
             setTimeout(function() {
-                $('.show-info-message').addClass('information-message')
-                $('.show-info-message').show();
+                $('#l-form-email').val($('#r-form-email').val());
+                $('#l-form-password').val($('#r-form-password').val());
+                $('#signInBtn').click();
             }, 200);
         };
 
         $('#textRegisterBtn').hide();
         $('#loadingRegisterSpinner').show();
 
+        let password = $('#r-form-password').val();
         $.ajax({
             "crossDomain": true,
             "url": RestAPI.registerUser,
@@ -46,7 +44,7 @@ jQuery(document).ready(function() {
             "data": JSON.stringify({
                 email : $('#r-form-email').val(),
                 user : $('#r-form-first-name').val(),
-                password : CryptoJS.MD5($('#r-form-password').val()).toString(),
+                password : CryptoJS.MD5(password).toString(),
                 jobTitle : $('#r-form-job-title').val()
             })
         }).success(success)
