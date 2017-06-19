@@ -77,7 +77,7 @@
                     <div id="newProjectArea" class="col-md-8" style="display:none">
                         <div id="newProjectCard" class="card" >
                             <div class="header">
-                                <h4 class="title">Create new project</h4>
+                                <h4 id="newProjectCardTitle" class="title">Create new project</h4>
                             </div>
                             <div class="content">
                                 <form>
@@ -137,6 +137,7 @@
                                         </div>
                                     </div>
 
+                                    <button type="button" style="margin-left:4px;" class="btn btn-danger btn-fill pull-right" onclick="deleteProject()">Delete</button>
                                     <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">Close</button>
                                     <button type="button" class="btn btn-info btn-fill pull-right" onclick="createProject()">Create</button>
                                     <div class="clearfix"></div>
@@ -233,13 +234,12 @@
         };
         function addProject() {
             closeHelpMessage();
+            $('#newProjectCardTitle').html("Create new project");
             $('#newProjectArea').fadeIn();
         }
 
         var afterSuccessOnCreateProject = function () {
-            $('#loadingCreateProject').hide();
-            $('#createAppLog').hide();
-            demo.showNotification('top', 'left', "Congratulations, you create your first project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.");
+            demo.showNotification('top', 'left', "Congratulations, you create a new project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.");
         };
 
         function hideCreateProjectArea() {
@@ -251,6 +251,7 @@
         }
 
         function viewProject(project) {
+            $('#newProjectCardTitle').html("Project Visualization");
             $('#projectName').val(project.name);
             $('#company').val(project.company);
             $('#zipcode').val(project.zipcode);
@@ -260,6 +261,31 @@
             $('#apiKey').val(project.apiKey);
             $('#encryptKey').val(project.decryptKey);
             $('#newProjectArea').fadeIn();
+        }
+
+        function deleteProject() {
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": RestAPI.generateHerokuInstance,
+                "method": "DELETE",
+                "headers": {
+                    "content-type": "application/json",
+                    "cache-control": "no-cache"
+                },
+                "data": JSON.stringify({
+                    ownerEmail: sessionStorage.getItem('wakanda-user-email'),
+                    token: sessionStorage.getItem('wakanda-user-token'),
+                    apiKey: $('#apiKey').val(),
+                })
+            };
+
+            $.ajax(settings).success(function (logs) {
+                demo.showNotification('top', 'left', "Ok, your app will be deleted, wait some seconds for him disappear.");
+                hideCreateProjectArea();
+            }).error(function(jqxHR, textStatus) {
+                demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
+            });
         }
 
         function createProject() {
@@ -289,9 +315,8 @@
                 afterSuccessOnCreateProject();
                 hideCreateProjectArea();
             }).error(function(jqxHR, textStatus) {
-                afterSuccessOnCreateProject();
+                demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
                 $('#newProjectCard').hide();
-                //alert('Ops aconteceu algum erro: ' + jqxHR.responseText);
             });
         }
     </script>
