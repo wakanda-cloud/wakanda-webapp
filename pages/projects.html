@@ -82,31 +82,16 @@
                             <div class="content">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Company</label>
                                                 <input id="company" type="text" class="form-control" placeholder="Company" value="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Project name</label>
                                                 <input id="projectName" type="text" class="form-control" placeholder="Project" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Decrypt Key</label>
-                                                <input id="decryptKey" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Security Token </label>
-                                                <input id="securityToken" type="text" class="form-control" placeholder="yellowegg" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -137,6 +122,20 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Api Key</label>
+                                                <input id="apiKey" type="text" class="form-control" disabled value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Encrypt Key</label>
+                                                <input id="encryptKey" type="text" class="form-control" disabled value="">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">Close</button>
                                     <button type="button" class="btn btn-info btn-fill pull-right" onclick="createProject()">Create</button>
@@ -162,7 +161,7 @@
             let addProjectsOnList = function (data) {
                 let array = JSON.parse(data);
                 array.forEach(function (element, index) {
-                    addProjectRow(element.company + " / " + element.name);
+                    addProjectRow(element.company + " / " + element.name, element);
                 });
             };
 
@@ -209,15 +208,20 @@
             return true;
         }
 
-        function addProjectRow(projectName) {
+        function addProjectRow(projectName, project) {
             var projectContainer = $('<div>');
             projectContainer.addClass('card cardProjectInfo');
             var projectLine = $('<div>');
             projectLine.attr('align', 'left').addClass('projectInfo');
             projectLine.html(projectName);
-            var editButton = $('<editButton>');
-            editButton.addClass("projectInfoEdit");
-            editButton.html('<a href="">Editar</a>');
+
+            var editButton = $('<a>');
+            editButton.addClass('projectInfoEdit');
+            editButton.bind('click', function() {
+                viewProject(project);
+            });
+            editButton.html("View");
+
             projectLine.append(editButton);
             projectContainer.append(projectLine);
             $('#projectsRow').append(projectContainer);
@@ -246,6 +250,18 @@
 
         }
 
+        function viewProject(project) {
+            $('#projectName').val(project.name);
+            $('#company').val(project.company);
+            $('#zipcode').val(project.zipcode);
+            $('#country').val(project.country);
+            $('#city').val(project.city);
+            $('#programmingLanguage').val(project.programmingLanguage);
+            $('#apiKey').val(project.apiKey);
+            $('#encryptKey').val(project.decryptKey);
+            $('#newProjectArea').fadeIn();
+        }
+
         function createProject() {
             var projectName = $('#projectName').val();
             var settings = {
@@ -265,8 +281,6 @@
                     zipcode: $('#zipcode').val(),
                     country: $('#country').val(),
                     city: $('#city').val(),
-                    decryptKey: $('#decryptKey').val(),
-                    securityToken: $('#securityToken').val(),
                     programmingLanguage: $('#programmingLanguage').val(),
                 })
             };

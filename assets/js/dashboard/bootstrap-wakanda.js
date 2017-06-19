@@ -201,8 +201,8 @@ $.urlParam = function(name){
 };
 
 $(document).ready(function() {
-//    if(!sessionStorage.getItem("wakanda-user-email")) {
-  //      $(window).attr('location', 'redirect-index.html');
-//    }
-})
+    if(!sessionStorage.getItem("wakanda-user-email")) {
+      $(window).attr('location', 'redirect-index.html');
+    }
+});
 
