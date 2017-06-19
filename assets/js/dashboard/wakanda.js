@@ -6224,16 +6224,25 @@
 
 class Wakanda {
 
-    constructor(encryptkey, apikey) {
+    constructor(encryptkey, apikey, options) {
         this.server = "https://wakanda-statistic-receiver.herokuapp.com/statistics";
         this.async = true;
         this.encryptkey = encryptkey;
         this.apiKey = apikey;
+        this.client = options.client;
+        this.module = options.module;
+        this.submodule = options.submodule;
+        this.title = options.title;
+        if(options.geoLocation) {
+        	this.configGeolocation();
+		}
 
         var wakanda = this;
         jQuery(".wakanda").bind('click', function (event) {
             wakanda.fireRegisterStatistic(wakanda, event);
         });
+
+        Wakanda.instance = this;
     }
 
     fireRegisterStatistic(context, event) {
@@ -6354,3 +6363,5 @@ class Wakanda {
         }).toString();
     }
 }
+
+Wakanda.instance = function(){}
