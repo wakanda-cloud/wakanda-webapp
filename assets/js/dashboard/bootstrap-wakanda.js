@@ -210,3 +210,23 @@ $(document).ready(function() {
     }
 });
 
+function logout() {
+    let invalidateToken = function () {
+        $.ajax({
+            url: RestAPI.login,
+            method: 'PATCH',
+            "headers": {
+                "content-type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache"
+            },
+            "data": {
+                "email": sessionStorage.getItem("wakanda-user-email"),
+                "token": sessionStorage.getItem("wakanda-user-token")
+            }
+        });
+    };
+    //invalidateToken();
+    sessionStorage.removeItem("wakanda-user-email");
+    sessionStorage.removeItem("wakanda-user-token");
+    redirectIndex();
+}
