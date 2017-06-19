@@ -184,7 +184,7 @@
 
             $.ajax({
                 method: 'GET',
-                url: RestAPI.fetchProjects,
+                url: RestAPI.projects,
                 crossDomain: true,
                 headers: {
                     "content-type": "application/x-www-form-urlencoded",
@@ -270,7 +270,7 @@
             let settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": RestAPI.generateHerokuInstance,
+                "url": RestAPI.projects,
                 "method": "DELETE",
                 "headers": {
                     "content-type": "application/json",
