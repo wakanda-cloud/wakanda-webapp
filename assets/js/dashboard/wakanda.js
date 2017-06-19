@@ -6247,12 +6247,21 @@ class Wakanda {
 
     fireRegisterStatistic(context, event) {
         context = this instanceof Wakanda ? this : context;
+        let linkClicked2 = "";
+        if(event && $(event.currentTarget).attr('alt')) {
+        	linkClicked2 = $(event.currentTarget).attr('alt');
+		} else if(event) {
+            linkClicked2 = $(event.currentTarget).html();
+		} else {
+            linkClicked2 = "N/A";
+		}
+
         let jsonData = {
-            "client": context.client,
-            "module": context.module,
-            "submodule": context.submodule,
-            "title": context.title,
-            "linkClicked": event ? event.currentTarget.attributes['alt'] ? event.currentTarget.attributes['alt'] : event.currentTarget.innerHTML : context.linkClicked,
+            "client": context._client,
+            "module": context._module,
+            "submodule": context._submodule,
+            "title": context._title,
+            "linkClicked": linkClicked2,
             "location": context.geoLocation
         };
 
