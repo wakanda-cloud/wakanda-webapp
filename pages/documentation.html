@@ -53,109 +53,66 @@
         <nav class="navbar navbar-default navbar-fixed" data-include="navbar">
         </nav>
 
+        <div style="margin-left:26px">
+            <h2 class="title">Wakanda libraries</h2>
+        </div>
         <div class="content">
             <div class="container-fluid">
-                <div class="card">
-                    <article style="padding-left:20px;padding-right:20px;padding-top:15px;"  class="markdown-body entry-content" itemprop="text">
-                        <h1><a id="user-content-getting-started" class="anchor" href="#getting-started"
-                               aria-hidden="true">
-                        </a>Getting Started
-                        </h1>
-                        <h3><a id="user-content--import-on-your-html-page-" class="anchor"
-                               href="#-import-on-your-html-page-" aria-hidden="true">
-                        </a> Import on your HTML Page
-                        </h3>
-                        <div class="highlight highlight-text-html-basic"><pre>  <span class="pl-c"><span class="pl-c">&lt;!--</span>Works with jquery-1.11.0 or greater!<span
-                                class="pl-c">--&gt;</span></span>
-  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://code.jquery.com/jquery-2.2.4.min.js<span
-                                    class="pl-pds">"</span></span> <span class="pl-e">integrity</span>=<span
-                                    class="pl-s"><span class="pl-pds">"</span>sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=<span
-                                    class="pl-pds">"</span></span>&gt;<span class="pl-s1">&lt;</span>/<span
-                                    class="pl-ent">script</span><span class="pl-ent"></span>&gt;
-  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdn.jsdelivr.net/gh/lucasventurasc/wakanda-webapp@v1.1/assets/js/dashboard/wakanda.js<span
-                                    class="pl-pds">"</span></span>&gt;<span class="pl-s1">&lt;</span>/<span
-                                    class="pl-ent">script</span>&gt;</pre>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Javascript</h4>
+                            </div>
+                            <div class="content">
+                                <span class="fa fa-github"></span>
+                                <a target="_blank" href="https://github.com/lucasventurasc/wakanda-js/blob/master/README.md">Browse Javascript docs on GitHub</a>
+                                <br><br>
+                                <span class="fa fa-jsfiddle"></span>
+                                <a target="_blank" href="https://jsfiddle.net/sbt01b1w/1/"> Try on JS Fiddle</a>
+                            </div>
                         </div>
-                        *<b>Please download wakanda-min.js and use inside your server</b>
-                        <h3>Start wakanda API like below</h3>
-                        <div class="highlight highlight-source-js"><pre>  <span class="pl-en">$</span>(<span
-                                class="pl-c1">document</span>).<span class="pl-en">ready</span>(<span class="pl-k">function</span>() {
-      <span class="pl-k">var</span> yourEncryptKey <span class="pl-k">=</span> <span class="pl-s"><span
-                                    class="pl-pds">"</span>ReplaceByYourDecryptKey<span class="pl-pds">"</span></span>;
-      <span class="pl-k">var</span> yourApiKey <span class="pl-k">=</span> <span class="pl-s"><span
-                                    class="pl-pds">"</span>ReplaceByYourApiKey<span class="pl-pds">"</span></span>;
-      <span class="pl-k">new</span> <span class="pl-en">Wakanda</span>(yourEncryptKey, yourApiKey, {
-          client<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Wakanda<span class="pl-pds">"</span></span>,
-          module<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Dashboard<span
-                                    class="pl-pds">"</span></span>,
-          submodule<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Widgets<span
-                                    class="pl-pds">"</span></span>,
-          title<span class="pl-k">:</span>  <span class="pl-s"><span class="pl-pds">"</span>Frequency Statistics<span
-                                    class="pl-pds">"</span></span>,
-          geoLocation<span class="pl-k">:</span> <span class="pl-c1">true</span>
-      });
-  });</pre>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Java</h4>
+                            </div>
+                            <div class="content">
+                                <span class="fa fa-github"></span>
+                                <a target="_blank" href="https://github.com/lucasventurasc/jwakanda">Developing</a>
+                                <br><br>
+                                <span class="fa fa-try"></span>
+                                <a target="_blank" href="https://jsfiddle.net/sbt01b1w/1/"> Try on JS Fiddle</a>
+                            </div>
                         </div>
-                        <b>*Note: you will find your decrypt key and Api Key in projects menu.</b>
-                        <h3>Now annotate your HTML elements with ".wakanda" class:</h3>
-                        <div class="highlight highlight-text-html-basic"><pre>  &lt;<span
-                                class="pl-ent">button</span> <span class="pl-e">class</span>=<span class="pl-s"><span
-                                class="pl-pds">"</span>wakanda<span class="pl-pds">"</span></span>&gt;Save&lt;/<span
-                                class="pl-ent">button</span>&gt;
-  &lt;<span class="pl-ent">a</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>wakanda<span
-                                    class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span
-                                    class="pl-s"><span class="pl-pds">"</span>anyurl<span class="pl-pds">"</span></span>&gt;Click here&lt;/<span
-                                    class="pl-ent">a</span>&gt;
-  &lt;<span class="pl-ent">img</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>wakanda<span
-                                    class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span
-                                    class="pl-s"><span class="pl-pds">"</span>anyImage<span
-                                    class="pl-pds">"</span></span>/&gt;</pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Python</h4>
+                            </div>
+                            <div class="content">
+                                <span class="fa fa-github"></span>
+                                <a target="_blank" href="">Comming soon</a>
+                                <br><br>
+                            </div>
                         </div>
-                        <p>When these elements are clicked, they will fire statistic from you app to your dashboard.</p>
-                        <h2><a id="user-content--advanced-" class="anchor" href="#-advanced-" aria-hidden="true">
-                        </a> Advanced
-                        </h2>
-                        <h5>If you want do some validations before statistic send or you want fire statistic with
-                            asynchronous
-                            functions you can fire statistic manually like below:</h5>
-                        <div class="highlight highlight-source-js"><pre>  <span class="pl-c"><span
-                                class="pl-c">//</span>Example 1</span>
-  <span class="pl-smi">Wakanda</span>.<span class="pl-smi">instance</span>.<span
-                                    class="pl-en">fireRegisterStatistic</span>(<span class="pl-smi">Wakanda</span>.<span
-                                    class="pl-smi">instance</span>);
-
-  <span class="pl-c"><span class="pl-c">//</span>Example 2: store Wakanda in a global variable to use after</span>
-  <span class="pl-k">var</span> wakanda <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Wakanda</span>(yourEncryptKey, yourApiKey, appConfigs);
-  <span class="pl-smi">wakanda</span>.<span class="pl-en">fireRegisterStatistic</span>(wakanda);</pre>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">REST Directly API</h4>
+                            </div>
+                            <div class="content">
+                                <span class="fa fa-github"></span>
+                                <a target="_blank" href="https://github.com/lucasventurasc/wakanda-statistic-receiver/blob/master/README.md">Browse REST docs on GitHub</a>
+                                <br><br>
+                            </div>
                         </div>
-                        <br>
-                        <h5>If you working with a responsive page and some primary attributes (module, submodule, title)
-                            changes after
-                            user use your pages you can configure these attributes manually too:</h5>
-                        <div class="highlight highlight-source-js"><pre>  <span class="pl-k">var</span> wakanda <span
-                                class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Wakanda</span>(yourEncryptKey, yourApiKey);
-
-  <span class="pl-k">function</span> <span class="pl-en">someUserEvent</span>() {
-    <span class="pl-smi">wakanda</span>.<span class="pl-smi">client</span> <span class="pl-k">=</span> <span
-                                    class="pl-s"><span class="pl-pds">"</span>Other client<span class="pl-pds">"</span></span>;
-    <span class="pl-smi">wakanda</span>.<span class="pl-smi">module</span> <span class="pl-k">=</span> <span
-                                    class="pl-s"><span class="pl-pds">"</span>Other module<span class="pl-pds">"</span></span>;
-    <span class="pl-smi">wakanda</span>.<span class="pl-smi">submodule</span> <span class="pl-k">=</span> <span
-                                    class="pl-s"><span class="pl-pds">"</span>Other submodule<span
-                                    class="pl-pds">"</span></span>;
-    <span class="pl-smi">wakanda</span>.<span class="pl-c1">title</span> <span class="pl-k">=</span> <span class="pl-s"><span
-                                    class="pl-pds">"</span>Other title<span class="pl-pds">"</span></span>;
-  }
-
-  <span class="pl-k">function</span> <span class="pl-en">save</span>() {
-    <span class="pl-smi">wakanda</span>.<span class="pl-en">fireRegisterStatistic</span>(wakanda);
-  }
-  </pre>
-                        </div>
-                        <br>
-                        <a href="https://jsfiddle.net/sbt01b1w/1/"> Run on JS Fiddle</a>
-                    </article>
-                    <br><br>
+                    </div>
                 </div>
             </div>
         </div>
