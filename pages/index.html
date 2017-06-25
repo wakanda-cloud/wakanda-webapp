@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../assets/css/index/index.css">
 		<link rel="stylesheet" href="../assets/css/general/loading-spinner.css">
 		<script src="../assets/js/general/restapi.js"></script>
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -38,44 +37,37 @@
                 	
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 text">
-                        <h1>Wakanda Cloud Statistic Collector</h1>
+                        <h1><data i18n="wakanda_cloud_statistic_collector"></data></h1>
                         <div class="description">
                         	<p>
-	                         	Wakanda service helps developers and product owners to collect
-								statistics of their systems and analyze to improve decision making.
+								<data i18n="wakanda_banner"></data>
                         	</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1 show-forms">
-                    	<span class="active">Sign in</span>
-                    </div>
-                </div>
-                
+				<br>
                 <div class="row register-form">
                     <div class="col-sm-4 col-sm-offset-1">
 						<form role="form" action="" method="post" class="r-form">
 	                    	<div class="form-group">
-	                    		<label class="sr-only" for="r-form-first-name">Name</label>
-	                        	<input type="text" name="r-form-first-name" placeholder="Name..." class="r-form-first-name form-control" id="r-form-first-name">
+	                    		<label class="sr-only" for="r-form-first-name" i18n="name"></label>
+	                        	<input type="text" name="r-form-first-name" placeholder_i18n="Name" class="r-form-first-name form-control" id="r-form-first-name">
 	                        </div>
 	                        <div class="form-group">
-	                        	<label class="sr-only" for="r-form-email">Email</label>
-	                        	<input type="text" name="r-form-email" placeholder="Email..." class="r-form-email form-control" id="r-form-email">
+	                        	<label class="sr-only" for="r-form-email" i18n="email"></label>
+	                        	<input type="text" name="r-form-email" placeholder_i18n="Email" class="r-form-email form-control" id="r-form-email">
 	                        </div>
 							<div class="form-group">
-								<label class="sr-only" for="r-form-password">Password</label>
-								<input type="password" name="r-form-password" placeholder="Password..." class="r-form-password form-control" id="r-form-password">
+								<label class="sr-only" for="r-form-password" i18n="password"></label>
+								<input type="password" name="r-form-password" placeholder_i18n="Password" class="r-form-password form-control" id="r-form-password">
 							</div>
 							<div class="form-group">
-								<label class="sr-only" for="r-form-job-title">Job Title</label>
-								<input type="text" name="r-form-job-title" placeholder="Job title..." class="r-form-job-title form-control" id="r-form-job-title">
+								<label class="sr-only" for="r-form-job-title" i18n="job_title"></label>
+								<input type="text" name="r-form-job-title" placeholder_i18n="Job_title" class="r-form-job-title form-control" id="r-form-job-title">
 							</div>
 							<div id="submitRegion">
 								<button type="button" class="btn" id="signupBtn">
-									<span id="textRegisterBtn">Register!</span>
+									<data id="textRegisterBtn" i18n="register"></data>
 									<span id="loadingRegisterSpinner" style="display: none">
 									  <div class="sk-wave">
 										<div class="sk-rect sk-rect1"></div>
@@ -87,7 +79,7 @@
 								</span>
 								</button>
 								<div style="color:white !important;font-size:15px;">
-									<span class="show-login-form" style="cursor: pointer;text-decoration: underline">Back to login</span>
+									<data class="show-login-form" style="cursor: pointer;text-decoration: underline" i18n="back_to_login"></data>
 								</div>
 							</div>
 
@@ -97,22 +89,29 @@
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-pencil"></i></div>
 							<div class="col-sm-10">
-								<h3>How we works</h3>
-								<p>Create your account, register a server and use our APIs to send statistics to us, access our dashboards and see statistics in real-time.</p>
+								<h3><data i18n="how_we_works">How we works</data></h3>
+								<p>
+									<data i18n="how_we_works_text"></data>
+								</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-commenting"></i></div>
 							<div class="col-sm-10">
-								<h3>Why us?</h3>
-								<p>It simple, faster config and more it reliable, see your statistics where you want, we have integrations with Google Sheets, Slack, PowerBI and our own Dashboard.</p>
+								<h3><data i18n="why_us"></data></h3>
+								<p>
+									<data i18n="why_us_text"></data>
+								</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-magic"></i></div>
 							<div class="col-sm-10">
-								<h3>Like a magic</h3>
-								<p>We have APIs to integrate statistic on your systems running on AngularJS, Javascript, Java, NodeJS, Python and Webhooks for other languages/technologies.
+								<h3>
+									<data i18n="like_a_magic"></data>
+								</h3>
+								<p>
+									<data i18n="like_a_magic_text"></data>
 								</p>
 							</div>
 						</div>
@@ -123,16 +122,18 @@
                     <div class="col-sm-4 col-sm-offset-1">
 						<form role="form" action="" method="post" class="l-form">
 	                    	<div class="form-group">
-	                    		<label class="sr-only" for="l-form-email">Email</label>
-	                        	<input type="text" name="l-form-email" placeholder="Email..." class="l-form-email form-control"
+	                    		<label class="sr-only" for="l-form-email" i18n="email"></label>
+	                        	<input type="text" name="l-form-email" placeholder_i18n="Email" class="l-form-email form-control"
 									   id="l-form-email">
 	                        </div>
 	                        <div class="form-group">
-	                        	<label class="sr-only" for="l-form-password">Password</label>
-	                        	<input type="password" name="l-form-password" placeholder="Password..." class="l-form-password form-control" id="l-form-password">
+	                        	<label class="sr-only" for="l-form-password" i18n="password"></label>
+	                        	<input type="password" name="l-form-password" placeholder_i18n="Password" class="l-form-password form-control" id="l-form-password">
 	                        </div>
 				            <button type="button" class="btn" id="signInBtn">
-								<span id="textLoginBtn">Login</span>
+								<span id="textLoginBtn">
+									<data i18n="login"></data>
+								</span>
 								<span id="loadingLoginSpinner" style="display: none">
 									  <div class="sk-wave">
 										<div class="sk-rect sk-rect1"></div>
@@ -144,38 +145,48 @@
 								</span>
 							</button>
 							<div style="color:white !important;font-size:15px;">
-								or <br><span class="show-register-form" style="cursor: pointer;text-decoration: underline">Register new account</span>
+								<data i18n="or"></data> <br><data class="show-register-form" style="cursor: pointer;text-decoration: underline" i18n="register_new_account"></data>
 							</div>
 				    	</form>
 				    	<div class="social-login">
-                        	<p>Or login with:</p>
+                        	<!--<p>Or login with:</p>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-1" href="#"><i class="fa fa-github"></i></a>
 	                        	<a class="btn btn-link-1" href="#"><i class="fa fa-slack"></i></a>
 	                        	<a class="btn btn-link-1" href="#"><i class="fa fa-google-plus"></i></a>
-                        	</div>
+                        	</div>!-->
                         </div>
                     </div>
                     <div class="col-sm-6 forms-right-icons">
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-cubes"></i></div>
 							<div class="col-sm-10">
-								<h3>New Features</h3>
-								<p>We added AngularJS API to help developers using angular to register statistics easier.</p>
+								<h3><data i18n="new_features"></data></h3>
+								<p>
+									<data i18n="new_features_text"></data>
+								</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-eye"></i></div>
 							<div class="col-sm-10">
-								<h3>Stay connected with your preffered control</h3>
-								<p>Remember, you can see your statistics on Google Sheets, PowerBI and on our own Dashboard.</p>
+								<h3>
+									<data i18n="stay_connected_preferred_control"></data>
+								</h3>
+								<p>
+									<data i18n="stay_connected_preferred_control_text"></data>
+								</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-2 icon"><i class="fa fa-connectdevelop"></i></div>
 							<div class="col-sm-10">
-								<h3>Become a developer</h3>
-								<p>Help us creating your own widgets and share with community, teams that help the community have complete free plans.</p>
+								<h3>
+									<data i18n="become_a_developer"></data>
+								</h3>
+								<p>
+									<data i18n="become_a_developer_text"></data>
+								</p>
 							</div>
 						</div>
                     </div>
@@ -185,14 +196,15 @@
         </div>
 
         <!-- Footer -->
-        <footer>
+        <footer style="margin-top:-70px;">
         	<div class="container">
         		<div class="row">
-
         			<div class="col-sm-8 col-sm-offset-2">
         				<div class="footer-border"></div>
 						<span class="fa fa-github"></span>
-        				<a href="https://github.com/lucasventurasc/wakanda" target="_blank">Community Project on GitHub</a>
+        				<a href="https://github.com/lucasventurasc/wakanda" target="_blank">
+							<data i18n="community_project_github"></data>
+						</a>
         			</div>
 
         		</div>
@@ -209,6 +221,7 @@
         <!--[if lt IE 10]>
             <script src="../assets/js/index/placeholder.js"></script>
         <![endif]-->
+		<script src="../assets/i18n/i18.js"></script>
 
     </body>
 

@@ -81,7 +81,7 @@ img {
 /***** Top content *****/
 
 .top-content {
-    padding: 60px 0 80px 0;
+    padding: 40px 0 80px 0;
 }
 
 .top-content .text {
@@ -203,7 +203,7 @@ footer {
 footer .footer-border {
     width: 200px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     border-top: 1px solid #fff;
     border-top: 1px solid rgba(255, 255, 255, 0.6);
 }

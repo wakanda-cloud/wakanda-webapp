@@ -1,0 +1,35 @@
+{
+  "values": {
+    "yes": "Sim",
+    "no": "Não",
+    "ok": "Ok",
+    "or" : "ou",
+    "Or" : "Ou",
+    "cancel": "Cancelar",
+    "login": "Entrar",
+    "wakanda_cloud_statistic_collector": "Nuvem Wakanda para Coleta de Estatísticas",
+    "wakanda_banner": "O serviço Wakanda ajuda desenvolvedores e product owners, a coletarem e analisar estatísticas de seus sistemas para melhorar a tomada de decisão",
+    "sign_in" : "Entrar",
+    "name" : "Nome",
+    "email" : "Email",
+    "password" : "Senha",
+    "job_title" : "Cargo",
+    "register" : "Registre-se!",
+    "back_to_login" : "Voltar ao login",
+    "how_we_works" : "Como funciona?",
+    "how_we_works_text" : "Crie sua conta, registre um projeto e use nossas APIs para enviar estatisticas para sua nuvem, acesse seu dashboard e veja estatisticas em tempo real.",
+    "why_us" : "Por que nós?",
+    "why_us_text" : "É simples, rápido para configurar e confiável, veja as estatisticas onde você quiser, nós temos integrações com Planilhas Google, Slack, PowerBI e nosso Dashboard.",
+    "like_a_magic" : "Como mágica",
+    "like_a_magic_text" : "Nós temos APIs desenvolvidas pela comunidade para integrar o envio das estatisticas em seus sistemas que rodam nas mais variadas plataformas além de integrações diretas via REST",
+    "new_features" : "Novidades",
+    "new_features_text" : "Adicionamos API javascript para ajudar desenvolvedores de sistemas web a registrarem estatisticas facilmente",
+    "stay_connected_preferred_control" : "Fique conectado em sua ferramenta de controle preferida",
+    "stay_connected_preferred_control_text" : "Lembre-se, você pode visualizar suas estatisticas nas Planilhas Google, Power BI e no nosso próprio dashboard.",
+    "become_a_developer"  : "Seja um desenvolvedor",
+    "become_a_developer_text" : "Ajude a comunidade criando seus próprios widgets e compartilhe com todos, times que ajudam a comunidade possuem acesso a planos completos.",
+    "community_project_github" : "Projeto da comunidade no GitHub",
+    "register_new_account" : "Crie uma nova conta"
+
+  }
+}
