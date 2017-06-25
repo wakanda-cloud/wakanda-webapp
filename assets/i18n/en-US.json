@@ -29,6 +29,27 @@
     "stay_connected_preferred_control_text" : "Remember, you can see your statistics on Google Sheets, PowerBI and on our own Dashboard.",
     "become_a_developer"  : "Become a developer",
     "become_a_developer_text" : "Help us creating your own widgets and share with community, teams that help the community have complete free plans.",
-    "community_project_github" : "Community Project on GitHub"
+    "community_project_github" : "Community Project on GitHub",
+    "projects" : "Projects",
+    "company" : "Company",
+    "project_name" : "Project name",
+    "main_programming_language" : "Main programming language",
+    "country" : "Country",
+    "city" : "City",
+    "postal_code" : "Postal code",
+    "api_key" : "Api key",
+    "encrypt_key" : "Encrypt key",
+    "delete" : "Delete",
+    "close" : "Close",
+    "create" : "Create",
+    "view" : "View",
+    "create_new_project" : "Create new project",
+    "project_visualization" : "Project visualization",
+    "message_success_create_project" : "Congratulations, you create a new project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.",
+    "message_app_deleted" : "Ok, your app will be deleted, wait some seconds for him disappear.",
+    "message_problems_try_again_later" : "Oops, we're having problems, please try again later.",
+    "message_project_help_without_projects" : "Hi, on this page you will manage your projects, you can have 2 projects for account, if you want more you can upgrade to PRO. <br><br>To create a new new project click on plus button on your left.",
+    "copy_to_clipboard" : "Copied to clipboard",
+    "message_how_to_use_api" : "This fields glowing in yellow are your Api Key and Encrypt Key, the utility libraries will ask you for this fields when you programming the send of statistics, go to Documentation to learn how you use this fields."
   }
 }

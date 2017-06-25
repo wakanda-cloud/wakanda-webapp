@@ -49,9 +49,11 @@
                 <div class="row">
                     <div id="projectsArea" class="col-md-4">
                         <div class="card" >
-                            <div class="header">
-                                <h4 class="title">Projects </h4>
-                                <button class="button button-royal button-circle button-small"
+                            <div class="header" >
+                                <h4 class="title">
+                                    <data i18n="projects"></data>
+                                </h4>
+                                <button id="addProjectBtn" class="button button-royal button-circle button-small"
                                         style="position: absolute; right: 30px; margin-top:-28px;"
                                         onclick="addProject()">
                                     <i class="fa fa-plus"></i>
@@ -77,27 +79,29 @@
                     <div id="newProjectArea" class="col-md-8" style="display:none">
                         <div id="newProjectCard" class="card" >
                             <div class="header">
-                                <h4 id="newProjectCardTitle" class="title">Create new project</h4>
+                                <h4 id="newProjectCardTitle" class="title">
+                                    <data i18n="create_new_project"></data>
+                                </h4>
                             </div>
                             <div class="content">
                                 <form>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Company</label>
-                                                <input id="company" type="text" class="form-control" placeholder="Company" value="">
+                                                <label i18n="company"></label>
+                                                <input id="company" type="text" class="form-control" placeholder_i18n="Company" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Project name</label>
-                                                <input id="projectName" type="text" class="form-control" placeholder="Project" value="">
+                                                <label i18n="project_name"></label>
+                                                <input id="projectName" type="text" class="form-control" placeholder_i18n="Project" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Main Programming Language</label>
-                                                <input id="programmingLanguage" type="text" class="form-control" placeholder="Java, NodeJS, Python or any other" value="">
+                                                <label i18n="main_programming_language"></label>
+                                                <input id="programmingLanguage" type="text" class="form-control" placeholder="Example: Java, NodeJS, Python" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -105,41 +109,65 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>City</label>
-                                                <input id="city" type="text" class="form-control" placeholder="City" value="">
+                                                <label i18n="city"></label>
+                                                <input id="city" type="text" class="form-control" placeholder_i18n="City" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Country</label>
-                                                <input id="country" type="text" class="form-control" placeholder="Country" value="">
+                                                <label i18n="country"></label>
+                                                <input id="country" type="text" class="form-control" placeholder_i18n="Country" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input id="zipcode" type="number" class="form-control" placeholder="ZIP Code">
+                                                <label i18n="postal_code"></label>
+                                                <input id="zipcode" type="number" class="form-control" placeholder_i18n="Postal_code">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="z-index:300">
                                             <div class="form-group">
-                                                <label>Api Key</label>
-                                                <input id="apiKey" type="text" class="form-control" disabled value="">
+                                                <label i18n="api_key"></label>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td>
+                                                            <input id="apiKey" type="text" class="form-control" disabled value="">
+                                                        </td>
+                                                        <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('apiKey').value)">
+                                                            <span class="fa fa-copy"></span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="z-index:300">
                                             <div class="form-group">
-                                                <label>Encrypt Key</label>
-                                                <input id="encryptKey" type="text" class="form-control" disabled value="">
+                                                <label i18n="encrypt_key"></label>
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td>
+                                                            <input id="encryptKey" type="text" class="form-control" disabled value="">
+                                                        </td>
+                                                        <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('encryptKey').value)">
+                                                            <span class="fa fa-copy"></span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="button" style="margin-left:4px;" class="btn btn-danger btn-fill pull-right" onclick="deleteProject()">Delete</button>
-                                    <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">Close</button>
-                                    <button type="button" class="btn btn-info btn-fill pull-right" onclick="createProject()">Create</button>
+                                    <button type="button" style="margin-left:4px;" class="btn btn-danger btn-fill pull-right" onclick="deleteProject()">
+                                        <data i18n="delete"></data>
+                                    </button>
+                                    <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">
+                                        <data i18n="close"></data>
+                                    </button>
+                                    <button type="button" class="btn btn-info btn-fill pull-right" id="createProjectBtn" onclick="createProject()">
+                                        <data i18n="create"></data>
+                                    </button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -166,19 +194,12 @@
                 });
             };
 
-            let showHelp = function () {
-                const text = "Hi, on this page you will manage your projects, you can have 2 projects for account, " +
-                "if you want more you can upgrade to PRO." +
-                "<br><br>To create a new new project click on plus button on your left."
-                demo.showNotification('top', 'right', text);
-            };
-
             var successLoadProjects = function (status, data) {
                 $('.projectsLoading').remove();
                 if (status !== "nocontent") {
                     addProjectsOnList(data);
                 } else {
-                    showHelp();
+                    ProjectHelper.run(ProjectHelper.anyProjectRegistered);
                 }
             };
 
@@ -224,7 +245,7 @@
             editButton.bind('click', function() {
                 viewProject(project);
             });
-            editButton.html("View");
+            editButton.html(i18n("view"));
 
             projectLine.append(editButton);
             projectContainer.append(projectLine);
@@ -237,12 +258,23 @@
         };
         function addProject() {
             closeHelpMessage();
-            $('#newProjectCardTitle').html("Create new project");
+
+            $('#projectName').val("");
+            $('#company').val("");
+            $('#zipcode').val("");
+            $('#country').val("");
+            $('#city').val("");
+            $('#programmingLanguage').val("");
+            $('#apiKey').val("");
+            $('#encryptKey').val("");
+
+            $('#newProjectCardTitle').html(i18n("create_new_project"));
             $('#newProjectArea').fadeIn();
+            $('#createProjectBtn').show();
         }
 
         var afterSuccessOnCreateProject = function () {
-            demo.showNotification('top', 'left', "Congratulations, you create a new project, your server its not ready yet, wait few minutes, we are working on that, you will be notified when its finished.");
+            demo.showNotification('top', 'right', i18n("message_success_create_project"), 'success');
         };
 
         function hideCreateProjectArea() {
@@ -254,7 +286,7 @@
         }
 
         function viewProject(project) {
-            $('#newProjectCardTitle').html("Project Visualization");
+            $('#newProjectCardTitle').html(i18n("project_visualization"));
             $('#projectName').val(project.name);
             $('#company').val(project.company);
             $('#zipcode').val(project.zipcode);
@@ -264,6 +296,11 @@
             $('#apiKey').val(project.apiKey);
             $('#encryptKey').val(project.decryptKey);
             $('#newProjectArea').fadeIn();
+            $('#createProjectBtn').hide();
+            setTimeout(function() {
+                ProjectHelper.run(ProjectHelper.createFirstProject);
+            }, 1000);
+
         }
 
         function deleteProject() {
@@ -277,16 +314,17 @@
             }
 
             $.ajax(settings).success(function (logs) {
-                demo.showNotification('top', 'left', "Ok, your app will be deleted, wait some seconds for him disappear.");
-                hideCreateProjectArea();
             }).error(function(jqxHR, textStatus, response) {
                 if(response.statusCode === 401) {
                     redirectIndex();
                 } else {
-                    demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
+                    demo.showNotification('top', 'right', i18n("message_problems_try_again_later"), 'danger');
                 }
 
             });
+
+            demo.showNotification('top', 'right', i18n("message_app_deleted"), 'success');
+            hideCreateProjectArea();
         }
 
         function createProject() {
@@ -313,20 +351,21 @@
             };
 
             $.ajax(settings).success(function (logs) {
-                afterSuccessOnCreateProject();
-                hideCreateProjectArea();
             }).error(function(jqxHR, textStatus, response) {
                 if(response.statusCode === 401) {
                     redirectIndex();
                 } else {
-                    demo.showNotification('top', 'left', "Oops, we're having problems, please try again later.");
-                    $('#newProjectCard').hide();
+                    demo.showNotification('top', 'right', i18n("message_problems_try_again_later"), 'danger');
                 }
             });
+
+            afterSuccessOnCreateProject();
+            hideCreateProjectArea();
         }
     </script>
     <!--   Core JS Files   -->
     <script src="../assets/js/general/jquery-1.11.1.js" type="text/javascript"></script>
+    <script src="../assets/i18n/i18.js"></script>
 	<script src="../assets/js/dashboard/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
@@ -345,5 +384,7 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/dashboard/demo.js"></script>
 
+    <script src="../assets/js/help/helper-libs.js"></script>
+    <script src="../assets/js/help/projects-help.js"></script>
 
 </html>

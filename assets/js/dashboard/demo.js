@@ -124,16 +124,15 @@ demo = {
         return map;
     },
     
-	showNotification: function(from, align, message){
+	showNotification: function(from, align, message, typeMessage, time){
     	color = Math.floor((Math.random() * 4) + 1);
     	
     	$.notify({
-        	icon: "pe-7s-gift",
         	message: message
         	
         },{
-            type: type[color],
-            timer: 999999,
+            type: typeMessage,
+            timer: time ? time : 999999,
             placement: {
                 from: from,
                 align: align

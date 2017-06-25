@@ -230,3 +230,13 @@ function logout() {
     sessionStorage.removeItem("wakanda-user-token");
     redirectIndex();
 }
+
+function copyToClipboard(textToCopy) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(textToCopy).select();
+    document.execCommand("copy");
+    $temp.remove();
+
+    demo.showNotification('top', 'right', i18n("copy_to_clipboard"), 'success', 1000);
+}

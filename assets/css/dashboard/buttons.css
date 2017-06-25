@@ -343,6 +343,12 @@
     border-color: #827ae1;
     color: #5246e2; }
 
+
+.button-royal-hover {
+    background-color: #a49ef0;
+    border-color: #a49ef0;
+    color: white;
+}
 /*
 * Base Layout Styles
 *

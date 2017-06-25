@@ -29,7 +29,28 @@
     "become_a_developer"  : "Seja um desenvolvedor",
     "become_a_developer_text" : "Ajude a comunidade criando seus próprios widgets e compartilhe com todos, times que ajudam a comunidade possuem acesso a planos completos.",
     "community_project_github" : "Projeto da comunidade no GitHub",
-    "register_new_account" : "Crie uma nova conta"
+    "register_new_account" : "Crie uma nova conta",
+    "projects" : "Projetos",
+    "company" : "Empresa",
+    "project_name" : "Nome do Projeto",
+    "main_programming_language" : "Linguagem de Programação",
+    "country" : "País",
+    "city" : "Cidade",
+    "postal_code" : "CEP",
+    "api_key" : "Chave API",
+    "encrypt_key" : "Chave encriptação",
+    "delete" : "Deletar",
+    "close" : "Fechar",
+    "create" : "Criar",
+    "view" : "Visualizar",
+    "create_new_project" : "Criar novo projeto",
+    "project_visualization" : "Visualização do projeto",
+    "message_success_create_project" : "Parabéns, você criou um novo projeto, seu servidor ainda não está pronto, aguarde alguns segundos, nós estamos trabalhando nisso, você será notificado quando estiver terminado.",
+    "message_app_deleted" : "Ok, seu projeto será deletado, aguarde alguns segundos que em breve ele desaparecerá da sua conta.",
+    "message_problems_try_again_later" : "Oops, estamos enfrentando alguns problemas, por favor tente novamente mais tarde.",
+    "message_project_help_without_projects" : "Olá, é nesta página que você vai gerenciar seus projetos, você pode ter 2 projetos por conta, se você quiser mais projetos você pode evoluir para a versão PRO. <br><br>Para criar um novo projeto clique no botão (+) na sua esquerda.",
+    "copy_to_clipboard" : "Copiado para a área de transferência",
+    "message_how_to_use_api": "Estes campos com sombra amarela são as informações que as bibliotecas utilitárias da wakanda irão solicitar a você, elas definirão que as estatísticas serão contabilizadas neste projeto, vá para a página de Documentação para aprender como utiliza-las."
 
   }
 }
