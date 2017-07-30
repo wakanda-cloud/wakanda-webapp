@@ -217,7 +217,13 @@
 </div>
 </body>
     <script>
+        function clearProjectList() {
+            $('#projectsRow').html('');
+        }
+
         function loadProjects() {
+            clearProjectList();
+
             let addProjectsOnList = function (data) {
                 let array = JSON.parse(data);
                 array.forEach(function (element, index) {
