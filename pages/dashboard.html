@@ -196,7 +196,18 @@
                 demo.showNotification("top", "right", msg);
                 removeLoadings();
             } else if (response.status === 200) {
-                loadDashboard(JSON.parse(data)[0]);
+                var fetchedProjects = JSON.parse(data);
+                if(SELECTED_PROJECT) {
+                    for(var project in fetchedProjects) {
+                        if(project.name === SELECTED_PROJECT) {
+                            loadDashboard(project);
+                            break;
+                        }
+                    }
+                } else {
+                    loadDashboard(fetchedProjects[0]);
+                }
+
             }
         }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
         });

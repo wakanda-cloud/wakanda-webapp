@@ -57,19 +57,27 @@
     </div>
 </div>
 <script>
+
+    var SELECTED_PROJECT = null;
+
     $(function() {
         if(window.location.href.indexOf("dashboard") > -1) {
             let $changeProjectMenu = $('#changeProjectMenu');
             Projects.listProjects(function(data, status) {
                 JSON.parse(data).forEach(function(element) {
-                    $changeProjectMenu.find('ul').append(createProjectItem(element.name));
+                    $changeProjectMenu.find('ul').append(createProjectItem(element));
                 });
             });
             $changeProjectMenu.show();
         }
     });
 
-    function createProjectItem(name) {
-        return $('<li></li>').html(name);
+    function createProjectItem(project) {
+        var a = $('<a href="#">' + project.company + " - " + project.name + '</a>');
+        a.attr('alt', project.name);
+        a.click(function() {
+            SELECTED_PROJECT = $(this).attr('alt');
+        });
+        return $('<li></li>').append(a);
     }
 </script>
