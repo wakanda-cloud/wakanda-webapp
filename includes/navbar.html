@@ -30,7 +30,7 @@
                     <li><a href="#">Another notification</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" id="changeProjectMenu" style="display:none">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <p>
                         Change project
@@ -39,9 +39,7 @@
 
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Project A</a></li>
-                    <li><a href="#">Project B</a></li>
-                    <li><a href="#">Project C</a></li>
+
                 </ul>
             </li>
             <li>
@@ -58,3 +56,20 @@
         </ul>
     </div>
 </div>
+<script>
+    $(function() {
+        if(window.location.href.indexOf("dashboard") > -1) {
+            let $changeProjectMenu = $('#changeProjectMenu');
+            Projects.listProjects(function(data, status) {
+                JSON.parse(data).forEach(function(element) {
+                    $changeProjectMenu.find('ul').append(createProjectItem(element.name));
+                });
+            });
+            $changeProjectMenu.show();
+        }
+    });
+
+    function createProjectItem(name) {
+        return $('<li></li>').html(name);
+    }
+</script>
