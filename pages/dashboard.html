@@ -177,7 +177,7 @@
 
     var map = "";
     function fetchProjects(name) {
-        showLoadings();
+        resetCharts();
         $.ajax({
             method: 'GET',
             url: RestAPI.projects,
@@ -224,22 +224,28 @@
         $('.uniqueClientsLoading').hide();
     }
 
-    function showLoadings() {
+    function resetCharts() {
         $('#statisticFrequency').hide();
         $('#uniqueClients').hide();
         $('#mostfeaturesaccessedDiv').hide();
+        $('#mostActiveDiv').find('p').html('');
+        mostPopularFeaturesChart.destroy();
+        frequencystatisticsChart.destroy();
 
         $('.statisticFrequencyLoading').show();
         $('.mostfeaturesaccessedLoading').show();
         $('.uniqueClientsLoading').show();
     }
 
+    var mostPopularFeaturesChart;
+    var frequencystatisticsChart;
+
     let loadDashboard = function (projectData) {
         $.ajax({
             url: projectData.url + "/fetchDashboardData",
             success: function (data) {
-                renderChartMostPopularFeatures(data.mostPopularFeatures);
-                renderChartFrequencyStatistics(data.frequencyReceived);
+                mostPopularFeaturesChart = renderChartMostPopularFeatures(data.mostPopularFeatures);
+                frequencystatisticsChart = renderChartFrequencyStatistics(data.frequencyReceived);
                 renderUniqueClients(data.uniqueClients);
                 renderTopMostActiveClients(data.topMostActiveClients);
             }
@@ -327,7 +333,7 @@
         });
 
         var color = Chart.helpers.color;
-        var chartFrequency = new Chart($('#frequencyChart'), {
+        return new Chart($('#frequencyChart'), {
             type: 'line',
             data: {
                 datasets: [{
@@ -430,7 +436,7 @@
         settingsChart.data.datasets[0].backgroundColor = backgroundColors;
         settingsChart.data.datasets[0].borderColor = borderColors;
 
-        new Chart(ctx, settingsChart);
+        return new Chart(ctx, settingsChart);
     }
 
     function getRandomColor(colorQuantity) {
