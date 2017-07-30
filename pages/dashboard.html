@@ -49,7 +49,6 @@
     <script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
 
     <script src="../assets/js/projects/projects.js"></script>
-    <script src="../assets/js/dashboard/change-project.js"></script>
 
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="../assets/js/dashboard/demo.js"></script>
@@ -232,9 +231,27 @@
         });
         bindButtons();
     };
+
     $(function () {
+        let $changeProjectMenu = $('#changeProjectMenu');
+        Projects.listProjects(function(data, status) {
+            JSON.parse(data).forEach(function(element) {
+                $changeProjectMenu.find('ul').append(createProjectItem(element));
+            });
+        });
+        $changeProjectMenu.show();
+
         fetchProjects();
     });
+
+    function createProjectItem(project) {
+        let $li = $('<li></li>');
+        $li.attr('alt', project.name);
+        $li.bind('click', function() {
+            fetchProjects($(this).attr('alt'));
+        });
+        return $li.append($('<a href="#">' + project.company + " - " + project.name + '</a>'));
+    }
 
     function bindButtons() {
         var dashboardEvents = new DashboardEvents();
