@@ -209,12 +209,13 @@
     }
 
     function findProjectByName(name, projects) {
+        var projectFound = null;
         projects.forEach(function(project) {
             if(project.name === name) {
-                return project;
+                projectFound = project;
             }
         });
-        return null;
+        return projectFound;
     }
 
     function removeLoadings() {
