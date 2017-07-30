@@ -198,12 +198,7 @@
             } else if (response.status === 200) {
                 var fetchedProjects = JSON.parse(data);
                 if(name) {
-                    for(var project in fetchedProjects) {
-                        if(project.name === name) {
-                            loadDashboard(project);
-                            break;
-                        }
-                    }
+                    loadDashboard(findProjectByName(name, fetchedProjects));
                 } else {
                     loadDashboard(fetchedProjects[0]);
                 }
@@ -211,6 +206,15 @@
             }
         }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
         });
+    }
+
+    function findProjectByName(name, projects) {
+        projects.forEach(function(project) {
+            if(project.name === name) {
+                return project;
+            }
+        });
+        return null;
     }
 
     function removeLoadings() {
