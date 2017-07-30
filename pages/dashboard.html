@@ -177,6 +177,7 @@
 
     var map = "";
     function fetchProjects(name) {
+        showLoadings();
         $.ajax({
             method: 'GET',
             url: RestAPI.projects,
@@ -197,7 +198,6 @@
             } else if (response.status === 200) {
                 var fetchedProjects = JSON.parse(data);
                 if(name) {
-                    showLoadings();
                     loadDashboard(findProjectByName(name, fetchedProjects));
                 } else {
                     loadDashboard(fetchedProjects[0]);
@@ -219,12 +219,20 @@
     }
 
     function removeLoadings() {
+        $('#statisticFrequency').show();
+        $('#uniqueClients').show();
+        $('#mostfeaturesaccessedDiv').show();
+
         $('.statisticFrequencyLoading').hide();
         $('.mostfeaturesaccessedLoading').hide();
         $('.uniqueClientsLoading').hide();
     }
 
     function showLoadings() {
+        $('#statisticFrequency').hide();
+        $('#uniqueClients').hide();
+        $('#mostfeaturesaccessedDiv').hide();
+
         $('.statisticFrequencyLoading').show();
         $('.mostfeaturesaccessedLoading').show();
         $('.uniqueClientsLoading').show();
@@ -299,13 +307,11 @@
     }
 
     function renderUniqueClients(uniqueClients) {
-        $('#uniqueClients').show();
         $('#uniqueClientsTotal').html(uniqueClients.total);
         $('#uniqueNewClients').html("+" + uniqueClients.newClients + "<span style='font-size:12px;font-weight:normal;color:#777; !important;'> on last week</span>");
     }
 
     function renderChartFrequencyStatistics(data) {
-        $('#statisticFrequency').show();
         var cartesianPlanChart = [];
 
         var chartDateFormat = 'YYYY-MM-DD';
@@ -363,8 +369,6 @@
     }
 
     function renderChartMostPopularFeatures(data) {
-        $('#mostfeaturesaccessedDiv').show();
-
         var canvas = $('<canvas id="mostfeaturesaccessedChart" width="400" height="235"></canvas>');
         canvas.appendTo($('#mostfeaturesaccessedDiv'));
 
