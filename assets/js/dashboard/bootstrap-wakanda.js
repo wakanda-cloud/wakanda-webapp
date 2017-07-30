@@ -205,6 +205,9 @@ var redirectIndex = function () {
 };
 
 $(document).ready(function() {
+    if(window.location.href.indexOf("localhost") > -1) {
+        return;
+    }
     if(!sessionStorage.getItem("wakanda-user-email")) {
       redirectIndex();
     }
