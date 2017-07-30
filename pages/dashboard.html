@@ -219,10 +219,6 @@
     }
 
     function removeLoadings() {
-        $('#statisticFrequency').show();
-        $('#uniqueClients').show();
-        $('#mostfeaturesaccessedDiv').show();
-
         $('.statisticFrequencyLoading').hide();
         $('.mostfeaturesaccessedLoading').hide();
         $('.uniqueClientsLoading').hide();
@@ -307,11 +303,13 @@
     }
 
     function renderUniqueClients(uniqueClients) {
+        $('#uniqueClients').show();
         $('#uniqueClientsTotal').html(uniqueClients.total);
         $('#uniqueNewClients').html("+" + uniqueClients.newClients + "<span style='font-size:12px;font-weight:normal;color:#777; !important;'> on last week</span>");
     }
 
     function renderChartFrequencyStatistics(data) {
+        $('#statisticFrequency').show();
         var cartesianPlanChart = [];
 
         var chartDateFormat = 'YYYY-MM-DD';
@@ -369,6 +367,8 @@
     }
 
     function renderChartMostPopularFeatures(data) {
+        $('#mostfeaturesaccessedDiv').show();
+
         var canvas = $('<canvas id="mostfeaturesaccessedChart" width="400" height="235"></canvas>');
         canvas.appendTo($('#mostfeaturesaccessedDiv'));
 
