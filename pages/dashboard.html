@@ -194,7 +194,6 @@
             if(response.status === 204) {
                 var msg = "Hi, you don't have registered projects yet, go to projects on left side menu to create your project, after created the statistics of then will apear here.";
                 demo.showNotification("top", "right", msg);
-                removeLoadings();
             } else if (response.status === 200) {
                 var fetchedProjects = JSON.parse(data);
                 if(name) {
@@ -203,8 +202,8 @@
                 } else {
                     loadDashboard(fetchedProjects[0]);
                 }
-
             }
+            removeLoadings();
         }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
         });
     }
@@ -219,18 +218,16 @@
         return projectFound;
     }
 
-    var loadingElements;
     function removeLoadings() {
-        loadingElements = new HashMap();
-        loadingElements.put($('.statisticFrequencyLoading').parent(), $('.statisticFrequencyLoading').remove());
-        loadingElements.put($('.mostfeaturesaccessedLoading').parent(), $('.mostfeaturesaccessedLoading').remove());
-        loadingElements.put($('.uniqueClientsLoading').parent(), $('.uniqueClientsLoading').remove());
+        $('.statisticFrequencyLoading').hide();
+        $('.mostfeaturesaccessedLoading').hide();
+        $('.uniqueClientsLoading').hide();
     }
 
     function showLoadings() {
-        loadingElements.forEach(function(value, key) {
-           key.append(value);
-        });
+        $('.statisticFrequencyLoading').show();
+        $('.mostfeaturesaccessedLoading').show();
+        $('.uniqueClientsLoading').show();
     }
 
     let loadDashboard = function (projectData) {
