@@ -126,7 +126,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="apiData">
+                                    <div id="apiDataSection">
                                         <div class="row">
                                             <div class="col-md-10">
                                                 <div class="form-group">
@@ -296,6 +296,8 @@
             $('#country').val("");
             $('#city').val("");
             $('#programmingLanguage').val("");
+
+            $('#apiDataSection').hide();
             $('#apiKey').val("");
             $('#encryptKey').val("");
             $('#linkSearchAPI').val("");
@@ -314,7 +316,6 @@
             $newProjectArea.fadeOut(400, function() {
                 $newProjectArea.hide();
             });
-
         }
 
         function viewProject(project) {
@@ -327,6 +328,8 @@
             $('#programmingLanguage').val(project.programmingLanguage);
             $('#apiKey').val(project.apiKey);
             $('#encryptKey').val(project.decryptKey);
+
+            $('#apiDataSection').show();
             $('#linkSearchAPI').val(project.linkSearchAPI);
             $('#newProjectArea').fadeIn();
             $('#createProjectBtn').hide();
