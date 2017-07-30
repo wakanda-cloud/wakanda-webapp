@@ -176,7 +176,7 @@
 <script>
 
     var map = "";
-    function fetchProjects() {
+    function fetchProjects(name) {
         $.ajax({
             method: 'GET',
             url: RestAPI.projects,
@@ -197,9 +197,9 @@
                 removeLoadings();
             } else if (response.status === 200) {
                 var fetchedProjects = JSON.parse(data);
-                if(SELECTED_PROJECT) {
+                if(name) {
                     for(var project in fetchedProjects) {
-                        if(project.name === SELECTED_PROJECT) {
+                        if(project.name === name) {
                             loadDashboard(project);
                             break;
                         }

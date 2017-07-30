@@ -76,7 +76,7 @@
         var a = $('<a href="#">' + project.company + " - " + project.name + '</a>');
         a.attr('alt', project.name);
         a.click(function() {
-            SELECTED_PROJECT = $(this).attr('alt');
+            fetchProjects($(this).attr('alt'));
         });
         return $('<li></li>').append(a);
     }
