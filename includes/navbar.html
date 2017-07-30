@@ -73,11 +73,11 @@
     });
 
     function createProjectItem(project) {
-        var a = $('<a href="#">' + project.company + " - " + project.name + '</a>');
-        a.attr('alt', project.name);
-        a.click(function() {
+        let $li = $('<li></li>');
+        $li.attr('alt', project.name);
+        $li.bind('click', function() {
             fetchProjects($(this).attr('alt'));
         });
-        return $('<li></li>').append(a);
+        return $li.append($('<a href="#">' + project.company + " - " + project.name + '</a>'));
     }
 </script>
