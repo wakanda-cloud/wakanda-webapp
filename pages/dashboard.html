@@ -229,8 +229,9 @@
         $('#uniqueClients').hide();
         $('#mostfeaturesaccessedDiv').hide();
         $('#mostActiveDiv').find('p').html('');
-        mostPopularFeaturesChart.destroy();
-        frequencystatisticsChart.destroy();
+
+        if(mostPopularFeaturesChart) mostPopularFeaturesChart.destroy();
+        if(frequencyStatisticsChart) frequencyStatisticsChart.destroy();
 
         $('.statisticFrequencyLoading').show();
         $('.mostfeaturesaccessedLoading').show();
@@ -238,14 +239,14 @@
     }
 
     var mostPopularFeaturesChart;
-    var frequencystatisticsChart;
+    var frequencyStatisticsChart;
 
     let loadDashboard = function (projectData) {
         $.ajax({
             url: projectData.url + "/fetchDashboardData",
             success: function (data) {
                 mostPopularFeaturesChart = renderChartMostPopularFeatures(data.mostPopularFeatures);
-                frequencystatisticsChart = renderChartFrequencyStatistics(data.frequencyReceived);
+                frequencyStatisticsChart = renderChartFrequencyStatistics(data.frequencyReceived);
                 renderUniqueClients(data.uniqueClients);
                 renderTopMostActiveClients(data.topMostActiveClients);
             }
