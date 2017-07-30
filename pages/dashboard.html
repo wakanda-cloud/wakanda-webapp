@@ -219,9 +219,11 @@
     }
 
     function removeLoadings() {
-        $('.statisticFrequencyLoading').hide();
-        $('.mostfeaturesaccessedLoading').hide();
-        $('.uniqueClientsLoading').hide();
+        setTimeout(function() {
+            $('.statisticFrequencyLoading').hide();
+            $('.mostfeaturesaccessedLoading').hide();
+            $('.uniqueClientsLoading').hide();
+        });
     }
 
     function resetCharts() {
@@ -278,7 +280,9 @@
         let $li = $('<li></li>');
         $li.attr('alt', project.name);
         $li.bind('click', function() {
-            fetchProjects($(this).attr('alt'));
+            var menuText = $(this).attr('alt');
+            $('#projectNameSelected').html(menuText);
+            fetchProjects(menuText);
         });
         return $li.append($('<a href="#">' + project.company + " - " + project.name + '</a>'));
     }
