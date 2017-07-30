@@ -126,35 +126,66 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6" style="z-index:300">
-                                            <div class="form-group">
-                                                <label i18n="api_key"></label>
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td>
-                                                            <input id="apiKey" type="text" class="form-control" disabled value="">
-                                                        </td>
-                                                        <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('apiKey').value)">
-                                                            <span class="fa fa-copy"></span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                    <div id="apiDataSection">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <div class="header" style="margin-left:-12px">
+                                                        <h4 class="title">
+                                                            <data i18n="api_details"></data>
+                                                        </h4>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6" style="z-index:300">
-                                            <div class="form-group">
-                                                <label i18n="encrypt_key"></label>
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td>
-                                                            <input id="encryptKey" type="text" class="form-control" disabled value="">
-                                                        </td>
-                                                        <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('encryptKey').value)">
-                                                            <span class="fa fa-copy"></span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+
+                                        <div class="row">
+                                            <div class="col-md-6" style="z-index:300">
+                                                <div class="form-group">
+                                                    <label i18n="api_key"></label>
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <input id="apiKey" type="text" class="form-control" disabled value="">
+                                                            </td>
+                                                            <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('apiKey').value)">
+                                                                <span class="fa fa-copy"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="z-index:300">
+                                                <div class="form-group">
+                                                    <label i18n="encrypt_key"></label>
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <input id="encryptKey" type="text" class="form-control" disabled value="">
+                                                            </td>
+                                                            <td align="center" style="cursor:pointer" onclick="copyToClipboard(document.getElementById('encryptKey').value)">
+                                                                <span class="fa fa-copy"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-20" style="z-index:300">
+                                                <div class="form-group">
+                                                    <label i18n="token_rest"></label>
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <input id="linkSearchAPI" type="text" class="form-control" disabled value="">
+                                                            </td>
+                                                            <td align="center" style="width: 35px;cursor:pointer" onclick="copyToClipboard(document.getElementById('linkSearchAPI').value)">
+                                                                <span class="fa fa-copy"></span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -265,8 +296,11 @@
             $('#country').val("");
             $('#city').val("");
             $('#programmingLanguage').val("");
+
+            $('#apiDataSection').hide();
             $('#apiKey').val("");
             $('#encryptKey').val("");
+            $('#linkSearchAPI').val("");
 
             $('#newProjectCardTitle').html(i18n("create_new_project"));
             $('#newProjectArea').fadeIn();
@@ -274,6 +308,9 @@
         }
 
         var afterSuccessOnCreateProject = function () {
+            setTimeout(function() {
+                loadProjects();
+            }, 3000);
             demo.showNotification('top', 'right', i18n("message_success_create_project"), 'success');
         };
 
@@ -282,7 +319,6 @@
             $newProjectArea.fadeOut(400, function() {
                 $newProjectArea.hide();
             });
-
         }
 
         function viewProject(project) {
@@ -295,6 +331,9 @@
             $('#programmingLanguage').val(project.programmingLanguage);
             $('#apiKey').val(project.apiKey);
             $('#encryptKey').val(project.decryptKey);
+
+            $('#apiDataSection').show();
+            $('#linkSearchAPI').val(project.linkSearchAPI);
             $('#newProjectArea').fadeIn();
             $('#createProjectBtn').hide();
             setTimeout(function() {

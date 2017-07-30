@@ -50,6 +50,8 @@
     "message_problems_try_again_later" : "Oops, we're having problems, please try again later.",
     "message_project_help_without_projects" : "Hi, on this page you will manage your projects, you can have 2 projects for account, if you want more you can upgrade to PRO. <br><br>To create a new new project click on plus button on your left.",
     "copy_to_clipboard" : "Copied to clipboard",
-    "message_how_to_use_api" : "This fields glowing in yellow are your Api Key and Encrypt Key, the utility libraries will ask you for this fields when you programming the send of statistics, go to Documentation to learn how you use this fields."
+    "message_how_to_use_api" : "This fields glowing in yellow are your Api Key and Encrypt Key, the utility libraries will ask you for this fields when you programming the send of statistics, go to Documentation to learn how you use this fields.",
+    "token_rest" : "Link to search by API",
+    "api_details" : "API Data"
   }
 }
