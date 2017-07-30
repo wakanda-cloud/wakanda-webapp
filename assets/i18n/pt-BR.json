@@ -53,6 +53,8 @@
     "message_how_to_use_api": "Estes campos com sombra amarela são as informações que as bibliotecas utilitárias da wakanda irão solicitar a você, elas definirão que as estatísticas serão contabilizadas neste projeto, clique <a href=\"/pages/documentation.html\">aqui</a> para ir para página de documentação e para aprender como utiliza-las.",
     "token_rest" : "Link consulta via API",
     "api_details" : "Dados API",
-    "documentation" : "Documentação"
+    "documentation" : "Documentação",
+    "delete_data" : "Deletar Dados",
+    "project_data_deleted_succeed" : "Todas as estatísticas deste projeto foram deletadas"
   }
 }
