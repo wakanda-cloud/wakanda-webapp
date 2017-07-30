@@ -308,6 +308,9 @@
         }
 
         var afterSuccessOnCreateProject = function () {
+            setTimeout(function() {
+                loadProjects();
+            }, 3000);
             demo.showNotification('top', 'right', i18n("message_success_create_project"), 'success');
         };
 
