@@ -232,16 +232,24 @@
         bindButtons();
     };
 
-    $(function () {
-        let $changeProjectMenu = $('#changeProjectMenu');
-        Projects.listProjects(function(data, status) {
-            JSON.parse(data).forEach(function(element) {
-                $changeProjectMenu.find('ul').append(createProjectItem(element));
-            });
-        });
-        $changeProjectMenu.show();
-
+    let setIntervalToConfigChangeProjectMenuWhenPageIsLoaded = function (interval) {
+        var interval = setInterval(function () {
+            var changeProjectMenu = $('#changeProjectMenu');
+            if (changeProjectMenu) {
+                Projects.listProjects(function (data, status) {
+                    JSON.parse(data).forEach(function (element) {
+                        changeProjectMenu.find('ul').append(createProjectItem(element));
+                    });
+                });
+                changeProjectMenu.show();
+                clearInterval(interval);
+            }
+        }, 500);
+    };
+    $(document).ready(function () {
         fetchProjects();
+
+        setIntervalToConfigChangeProjectMenuWhenPageIsLoaded(interval);
     });
 
     function createProjectItem(project) {
