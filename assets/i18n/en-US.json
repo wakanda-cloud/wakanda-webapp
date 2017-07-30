@@ -53,6 +53,8 @@
     "message_how_to_use_api" : "This fields glowing in yellow are your Api Key and Encrypt Key, the utility libraries will ask you for this fields when you programming the send of statistics, click <a href=\"/pages/documentation.html\">here</a> to go to documentation and learn how you use this fields.",
     "token_rest" : "Link to search by API",
     "api_details" : "API Data",
-    "documentation" : "Documentation"
+    "documentation" : "Documentation",
+    "delete_data" : "Delete Data",
+    "project_data_deleted_succeed" : "All statistic data of this project has been deleted"
   }
 }

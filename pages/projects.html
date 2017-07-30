@@ -193,6 +193,9 @@
                                     <button type="button" style="margin-left:4px;" class="btn btn-danger btn-fill pull-right" onclick="deleteProject()">
                                         <data i18n="delete"></data>
                                     </button>
+                                    <button type="button" style="margin-left:4px;" class="btn btn-danger btn-fill pull-right" onclick="deleteProjectData()">
+                                        <data i18n="delete"></data>
+                                    </button>
                                     <button type="button" style="margin-left:4px;" class="btn btn-info btn-fill pull-right" onclick="hideCreateProjectArea()">
                                         <data i18n="close"></data>
                                     </button>
@@ -324,6 +327,28 @@
                 ProjectHelper.run(ProjectHelper.createFirstProject);
             }, 1000);
 
+        }
+
+        function deleteProjectData() {
+            $.ajax({
+                "async": true,
+                "crossDomain": true,
+                "url": RestAPI.statistics,
+                "method": "DELETE",
+                "headers": {
+                    "content-type": "application/json"
+                },
+                "data": JSON.stringify({
+                    email : sessionStorage.getItem("wakanda-user-email"),
+                    token : sessionStorage.getItem("wakanda-user-token"),
+                    apiKey : $('#apiKey').val()
+                })
+            }).success(function (logs) {
+                demo.showNotification('top', 'right', i18n("project_data_deleted_succeed"), 'success');
+            }).error(function(jqxHR, textStatus, response) {
+                if(response.statusCode === 401) redirectIndex();
+                else demo.showNotification('top', 'right', i18n("message_problems_try_again_later"), 'danger');
+            });
         }
 
         function deleteProject() {
