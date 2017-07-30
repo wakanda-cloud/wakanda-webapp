@@ -198,6 +198,7 @@
             } else if (response.status === 200) {
                 var fetchedProjects = JSON.parse(data);
                 if(name) {
+                    showLoadings();
                     loadDashboard(findProjectByName(name, fetchedProjects));
                 } else {
                     loadDashboard(fetchedProjects[0]);
@@ -218,10 +219,18 @@
         return projectFound;
     }
 
+    var loadingElements;
     function removeLoadings() {
-        $('.statisticFrequencyLoading').remove();
-        $('.mostfeaturesaccessedLoading').remove();
-        $('.uniqueClientsLoading').remove();
+        loadingElements = new HashMap();
+        loadingElements.put($('.statisticFrequencyLoading').parent(), $('.statisticFrequencyLoading').remove());
+        loadingElements.put($('.mostfeaturesaccessedLoading').parent(), $('.mostfeaturesaccessedLoading').remove());
+        loadingElements.put($('.uniqueClientsLoading').parent(), $('.uniqueClientsLoading').remove());
+    }
+
+    function showLoadings() {
+        loadingElements.forEach(function(value, key) {
+           key.append(value);
+        });
     }
 
     let loadDashboard = function (projectData) {
@@ -280,24 +289,25 @@
 
     function renderTopMostActiveClients(topMostActiveClients) {
         var mostActiveContainer = $('#mostActiveDiv');
+
+        mostActiveContainer.find('p').html('');
+
         topMostActiveClients.forEach(function(element, index) {
             let registeredStatistics = "Statistics registered: " + element.statisticData.length;
 
             let listItemClient = mostActiveContainer.find('p').get(index);
-            listItemClient.setAttribute('title', registeredStatistics)
+            listItemClient.setAttribute('title', registeredStatistics);
             listItemClient.innerHTML = element.client;
         });
     }
 
     function renderUniqueClients(uniqueClients) {
-        $('.uniqueClientsLoading').remove();
         $('#uniqueClients').show();
         $('#uniqueClientsTotal').html(uniqueClients.total);
         $('#uniqueNewClients').html("+" + uniqueClients.newClients + "<span style='font-size:12px;font-weight:normal;color:#777; !important;'> on last week</span>");
     }
 
     function renderChartFrequencyStatistics(data) {
-        $('.statisticFrequencyLoading').remove();
         $('#statisticFrequency').show();
         var cartesianPlanChart = [];
 
@@ -356,8 +366,6 @@
     }
 
     function renderChartMostPopularFeatures(data) {
-        $('#mostfeaturesaccessedChart').remove();
-        $('.mostfeaturesaccessedLoading').remove();
         $('#mostfeaturesaccessedDiv').show();
 
         var canvas = $('<canvas id="mostfeaturesaccessedChart" width="400" height="235"></canvas>');
