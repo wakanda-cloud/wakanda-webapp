@@ -232,7 +232,7 @@
         bindButtons();
     };
 
-    let setIntervalToConfigChangeProjectMenuWhenPageIsLoaded = function (interval) {
+    function setIntervalToConfigChangeProjectMenuWhenPageIsLoaded {
         var interval = setInterval(function () {
             var changeProjectMenu = $('#changeProjectMenu');
             if (changeProjectMenu) {
@@ -246,10 +246,10 @@
             }
         }, 500);
     };
+
     $(document).ready(function () {
         fetchProjects();
-
-        setIntervalToConfigChangeProjectMenuWhenPageIsLoaded(interval);
+        setIntervalToConfigChangeProjectMenuWhenPageIsLoaded();
     });
 
     function createProjectItem(project) {
