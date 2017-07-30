@@ -50,7 +50,8 @@
     "message_problems_try_again_later" : "Oops, estamos enfrentando alguns problemas, por favor tente novamente mais tarde.",
     "message_project_help_without_projects" : "Olá, é nesta página que você vai gerenciar seus projetos, você pode ter 2 projetos por conta, se você quiser mais projetos você pode evoluir para a versão PRO. <br><br>Para criar um novo projeto clique no botão (+) na sua esquerda.",
     "copy_to_clipboard" : "Copiado para a área de transferência",
-    "message_how_to_use_api": "Estes campos com sombra amarela são as informações que as bibliotecas utilitárias da wakanda irão solicitar a você, elas definirão que as estatísticas serão contabilizadas neste projeto, vá para a página de Documentação para aprender como utiliza-las."
-
+    "message_how_to_use_api": "Estes campos com sombra amarela são as informações que as bibliotecas utilitárias da wakanda irão solicitar a você, elas definirão que as estatísticas serão contabilizadas neste projeto, vá para a página de Documentação para aprender como utiliza-las.",
+    "token_rest" : "Link consulta via API",
+    "api_details" : "Dados API"
   }
 }
