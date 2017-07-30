@@ -16,11 +16,13 @@ GlowElement.do = function(element) {
     }, 1000));
 };
 
-GlowElement.undo = function(element) {
-    $(element).css('box-shadow', '');
+GlowElement.undo = function(elementGlowed) {
     removeBlackScreen();
     GlowElement.interval.forEach(function(element) {
         clearInterval(element);
+        setTimeout(function() {
+            $(elementGlowed).css('box-shadow', '');
+        }, 1000)
     });
 };
 
@@ -38,11 +40,13 @@ GlowElementWhite.do = function(element) {
     }, 1000));
 };
 
-GlowElementWhite.undo = function(element) {
-    $(element).css('box-shadow', '');
+GlowElementWhite.undo = function(elementGlowed) {
     removeBlackScreen();
     GlowElement.interval.forEach(function(element) {
         clearInterval(element);
+        setTimeout(function() {
+            $(elementGlowed).css('box-shadow', '');
+        }, 1000)
     });
 };
 

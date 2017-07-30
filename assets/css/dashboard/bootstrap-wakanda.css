@@ -869,7 +869,7 @@ body > .navbar-collapse {
     padding-left: 65px; }
 
 .alert-info {
-  background-color: #63d8f1; }
+  background-color: purple; }
 
 .alert-success {
   background-color: #a1e82c; }
@@ -1362,7 +1362,7 @@ body > .navbar-collapse {
   background-color: #4091e2; }
 
 .navbar-ct-azure {
-  background-color: #63d8f1; }
+  background-color: purple; }
 
 .navbar-ct-green {
   background-color: #a1e82c; }

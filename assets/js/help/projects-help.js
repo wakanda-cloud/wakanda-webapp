@@ -13,8 +13,7 @@ ProjectHelper.anyProjectRegistered = {
 ProjectHelper.createFirstProject = {
     actions: [
         {element: '#apiKey', action: GlowElement},
-        {element: '#encryptKey', action: GlowElement},
-        {element: "#documentationMenu", action: GlowElementWhite}
+        {element: '#encryptKey', action: GlowElement}
     ],
     notification: "message_how_to_use_api",
     stopTrigger: [
