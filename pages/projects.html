@@ -217,7 +217,14 @@
 </div>
 </body>
     <script>
+
+        function clearProjectList() {
+            $('#projectsRow').html('');
+        }
+
         function loadProjects() {
+            clearProjectList();
+
             let addProjectsOnList = function (data) {
                 let array = JSON.parse(data);
                 array.forEach(function (element, index) {
@@ -234,34 +241,11 @@
                 }
             };
 
-            $.ajax({
-                method: 'GET',
-                url: RestAPI.projects,
-                crossDomain: true,
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded",
-                    "cache-control": "no-cache"
-                },
-                data: {
-                    email: sessionStorage.getItem('wakanda-user-email'),
-                    token: sessionStorage.getItem('wakanda-user-token')
-                }
-            }).success(function(data, status) {
-                successLoadProjects(status, data);
-            }).error(function(jqXHR, textStatus, response, thrownError) {
-                if(response.statusCode === 401) {
-                    redirectIndex();
-                }
+            Projects.listProjects(function(data, status) {
+                successLoadProjects(status, data)
+            }, function() {
+               //implement error callback
             });
-        }
-
-        function isJson(str) {
-            try {
-                JSON.parse(str);
-            } catch (e) {
-                return false;
-            }
-            return true;
         }
 
         function addProjectRow(projectName, project) {
@@ -425,5 +409,6 @@
 
     <script src="../assets/js/help/helper-libs.js"></script>
     <script src="../assets/js/help/projects-help.js"></script>
+    <script src="../assets/js/projects/projects.js"></script>
 
 </html>

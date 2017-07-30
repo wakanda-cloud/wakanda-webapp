@@ -48,6 +48,8 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="../assets/js/dashboard/bootstrap-wakanda.js"></script>
 
+    <script src="../assets/js/projects/projects.js"></script>
+
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="../assets/js/dashboard/demo.js"></script>
 </head>
@@ -174,7 +176,8 @@
 <script>
 
     var map = "";
-    function fetchProjects() {
+    function fetchProjects(name) {
+        showLoadings();
         $.ajax({
             method: 'GET',
             url: RestAPI.projects,
@@ -192,18 +195,43 @@
             if(response.status === 204) {
                 var msg = "Hi, you don't have registered projects yet, go to projects on left side menu to create your project, after created the statistics of then will apear here.";
                 demo.showNotification("top", "right", msg);
-                removeLoadings();
             } else if (response.status === 200) {
-                loadDashboard(JSON.parse(data)[0]);
+                var fetchedProjects = JSON.parse(data);
+                if(name) {
+                    loadDashboard(findProjectByName(name, fetchedProjects));
+                } else {
+                    loadDashboard(fetchedProjects[0]);
+                }
             }
+            removeLoadings();
         }).error(function(jqXHR, textStatus, ajaxSettings, thrownError) {
         });
     }
 
+    function findProjectByName(name, projects) {
+        var projectFound = null;
+        projects.forEach(function(project) {
+            if(project.name === name) {
+                projectFound = project;
+            }
+        });
+        return projectFound;
+    }
+
     function removeLoadings() {
-        $('.statisticFrequencyLoading').remove();
-        $('.mostfeaturesaccessedLoading').remove();
-        $('.uniqueClientsLoading').remove();
+        $('.statisticFrequencyLoading').hide();
+        $('.mostfeaturesaccessedLoading').hide();
+        $('.uniqueClientsLoading').hide();
+    }
+
+    function showLoadings() {
+        $('#statisticFrequency').hide();
+        $('#uniqueClients').hide();
+        $('#mostfeaturesaccessedDiv').hide();
+
+        $('.statisticFrequencyLoading').show();
+        $('.mostfeaturesaccessedLoading').show();
+        $('.uniqueClientsLoading').show();
     }
 
     let loadDashboard = function (projectData) {
@@ -218,9 +246,35 @@
         });
         bindButtons();
     };
-    $(function () {
+
+    function setIntervalToConfigChangeProjectMenuWhenPageIsLoaded() {
+        var interval = setInterval(function () {
+            var changeProjectMenu = $('#changeProjectMenu');
+            if (changeProjectMenu) {
+                Projects.listProjects(function (data, status) {
+                    JSON.parse(data).forEach(function (element) {
+                        changeProjectMenu.find('ul').append(createProjectItem(element));
+                    });
+                });
+                changeProjectMenu.show();
+                clearInterval(interval);
+            }
+        }, 500);
+    };
+
+    $(document).ready(function () {
         fetchProjects();
+        setIntervalToConfigChangeProjectMenuWhenPageIsLoaded();
     });
+
+    function createProjectItem(project) {
+        let $li = $('<li></li>');
+        $li.attr('alt', project.name);
+        $li.bind('click', function() {
+            fetchProjects($(this).attr('alt'));
+        });
+        return $li.append($('<a href="#">' + project.company + " - " + project.name + '</a>'));
+    }
 
     function bindButtons() {
         var dashboardEvents = new DashboardEvents();
@@ -236,24 +290,25 @@
 
     function renderTopMostActiveClients(topMostActiveClients) {
         var mostActiveContainer = $('#mostActiveDiv');
+
+        mostActiveContainer.find('p').html('');
+
         topMostActiveClients.forEach(function(element, index) {
             let registeredStatistics = "Statistics registered: " + element.statisticData.length;
 
             let listItemClient = mostActiveContainer.find('p').get(index);
-            listItemClient.setAttribute('title', registeredStatistics)
+            listItemClient.setAttribute('title', registeredStatistics);
             listItemClient.innerHTML = element.client;
         });
     }
 
     function renderUniqueClients(uniqueClients) {
-        $('.uniqueClientsLoading').remove();
         $('#uniqueClients').show();
         $('#uniqueClientsTotal').html(uniqueClients.total);
         $('#uniqueNewClients').html("+" + uniqueClients.newClients + "<span style='font-size:12px;font-weight:normal;color:#777; !important;'> on last week</span>");
     }
 
     function renderChartFrequencyStatistics(data) {
-        $('.statisticFrequencyLoading').remove();
         $('#statisticFrequency').show();
         var cartesianPlanChart = [];
 
@@ -312,8 +367,6 @@
     }
 
     function renderChartMostPopularFeatures(data) {
-        $('#mostfeaturesaccessedChart').remove();
-        $('.mostfeaturesaccessedLoading').remove();
         $('#mostfeaturesaccessedDiv').show();
 
         var canvas = $('<canvas id="mostfeaturesaccessedChart" width="400" height="235"></canvas>');
