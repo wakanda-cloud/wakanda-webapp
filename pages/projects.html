@@ -88,13 +88,13 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label i18n="company"></label>
+                                                <label i18n="company*"></label>
                                                 <input id="company" type="text" class="form-control" placeholder_i18n="Company" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label i18n="project_name"></label>
+                                                <label i18n="project_name*"></label>
                                                 <input id="projectName" type="text" class="form-control" placeholder_i18n="Project" value="">
                                             </div>
                                         </div>
@@ -123,6 +123,14 @@
                                             <div class="form-group">
                                                 <label i18n="postal_code"></label>
                                                 <input id="zipcode" type="number" class="form-control" placeholder_i18n="Postal_code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="herokuApiKeyDiv">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label i18n="Heroku API Key*"></label>
+                                                <input id="herokuApiKey" type="text" class="form-control" placeholder_i18n="We_wont_save_this_field" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -284,6 +292,7 @@
             $('#city').val("");
             $('#programmingLanguage').val("");
 
+            $('#herokuApiKeyField').show();
             $('#apiDataSection').hide();
             $('#apiKey').val("");
             $('#encryptKey').val("");
@@ -320,6 +329,8 @@
             $('#encryptKey').val(project.decryptKey);
 
             $('#apiDataSection').show();
+            $('#herokuApiKeyField').hide();
+
             $('#linkSearchAPI').val(project.linkSearchAPI);
             $('#newProjectArea').fadeIn();
             $('#createProjectBtn').hide();
@@ -375,7 +386,24 @@
             hideCreateProjectArea();
         }
 
+        function validateRequiredFields() {
+            var fields = ['company', 'projectName', 'herokuApiKey'];
+            for(var index in fields) {
+                var element = jQuery('#' + fields[index]);
+                if (!element.val()) {
+                    demo.showNotification('top', 'right', 'Please complete all fields marked with *', 'warning');
+                    element.focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+
         function createProject() {
+            if(!validateRequiredFields()) {
+                return false;
+            }
+
             var projectName = $('#projectName').val();
             var settings = {
                 "async": true,
@@ -395,6 +423,7 @@
                     country: $('#country').val(),
                     city: $('#city').val(),
                     programmingLanguage: $('#programmingLanguage').val(),
+                    herokuauth: $('#herokuApiKey').val()
                 })
             };
 

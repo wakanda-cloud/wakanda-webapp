@@ -55,6 +55,7 @@
     "api_details" : "Dados API",
     "documentation" : "Documentação",
     "delete_data" : "Deletar Dados",
-    "project_data_deleted_succeed" : "Todas as estatísticas deste projeto foram deletadas"
+    "project_data_deleted_succeed" : "Todas as estatísticas deste projeto foram deletadas",
+    "we_wont_save_this_field": "Nós não salvaremos este campo"
   }
 }
